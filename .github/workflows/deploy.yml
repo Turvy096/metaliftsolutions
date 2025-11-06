@@ -1,54 +1,54 @@
-name: 🚀 Build and Deploy React (Vite + Tailwind) to InfinityFree
+name: 🚀 Deploy React (Vite + Tailwind) to InfinityFree
 
 on:
-  push:
-    branches:
-      - main  # runs whenever you push or merge to main
+    push:
+        branches:
+            - main
+            - dev
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+    build-and-deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      # 1️⃣ Checkout repo
-      - name: Checkout repository
-        uses: actions/checkout@v4
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-      # 2️⃣ Set up Node.js (use version you used locally)
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
 
-      # 3️⃣ Cache npm dependencies (makes builds faster)
-      - name: Cache node modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+            - name: Cache node modules
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
 
-      # 4️⃣ Install dependencies
-      - name: Install dependencies
-        run: npm ci
+            - name: Install dependencies
+              run: npm ci
 
-      # 5️⃣ Build your Vite project
-      - name: Build project
-        run: npm run build
+            - name: Build project
+              run: npm run build
 
-      # 6️⃣ Deploy the dist/ folder to InfinityFree via FTP
-      - name: Upload dist folder via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_PATH }}/
-          local-dir: ./dist/
-          exclude: |
-            **/.git*
-            **/.github*
-            **/node_modules/**
-            **/src/**
-            **/package*.json
+            - name: Deploy to Dev (when pushing to dev branch)
+              if: github.ref == 'refs/heads/dev'
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.FTP_PATH_DEV }}
+                  local-dir: ./dist/
+
+            - name: Deploy to Live (when pushing to main branch)
+              if: github.ref == 'refs/heads/main'
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.FTP_PATH_LIVE }}
+                  local-dir: ./dist/

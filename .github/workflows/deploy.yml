@@ -1,54 +1,27 @@
-name: 🚀 Deploy React (Vite + Tailwind) to InfinityFree
+name: 🚀 Deploy Website to InfinityFree via FTP
 
 on:
     push:
         branches:
-            - main
-            - dev
+            - main # make sure this matches your branch name
 
 jobs:
-    build-and-deploy:
+    deploy:
         runs-on: ubuntu-latest
 
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-
-            - name: Cache node modules
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-                  restore-keys: |
-                      ${{ runner.os }}-node-
-
-            - name: Install dependencies
-              run: npm ci
-
-            - name: Build project
-              run: npm run build
-
-            - name: Deploy to Dev (when pushing to dev branch)
-              if: github.ref == 'refs/heads/dev'
+            - name: Upload dist folder via FTP
               uses: SamKirkland/FTP-Deploy-Action@v4.3.5
               with:
                   server: ${{ secrets.FTP_SERVER }}
                   username: ${{ secrets.FTP_USERNAME }}
                   password: ${{ secrets.FTP_PASSWORD }}
-                  server-dir: ${{ secrets.FTP_PATH_DEV }}
+                  server-dir: ${{ secrets.FTP_PATH }}/
                   local-dir: ./dist/
-
-            - name: Deploy to Live (when pushing to main branch)
-              if: github.ref == 'refs/heads/main'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ secrets.FTP_SERVER }}
-                  username: ${{ secrets.FTP_USERNAME }}
-                  password: ${{ secrets.FTP_PASSWORD }}
-                  server-dir: ${{ secrets.FTP_PATH_LIVE }}
-                  local-dir: ./dist/
+                  exclude: |
+                      **/.git*
+                      **/.github*
+                      **/node_modules/**

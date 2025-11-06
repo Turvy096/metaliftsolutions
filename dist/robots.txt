@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://metaliftsolutions.co.ke/sitemap.xml

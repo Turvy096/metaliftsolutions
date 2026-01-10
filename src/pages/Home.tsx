@@ -74,10 +74,10 @@ const Home = () => (
               What we do
             </p>
             <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">
-              Product strategy, design, and engineering--aligned from day one.
+              Product strategy, design, and engineering aligned from day one.
             </h2>
             <p className="text-slate-700 dark:text-slate-100">
-              Whether you&apos;re launching a new venture or elevating a flagship product, we plug in
+              Whether you're launching a new venture or elevating a flagship product, we plug in
               as an elite cross-functional squad. Expect thought partnership, pixel-perfect design,
               and reliable delivery.
             </p>
@@ -86,6 +86,9 @@ const Home = () => (
               handovers. We operate with clear governance, shared documentation, and measurement plans
               that keep business goals in sight.
             </p>
+            <p className="text-slate-700 dark:text-slate-100">We don't just build features; we define the "why." Our discovery phase aligns your business objectives with actual user needs to ensure we are building the right product for the right market.</p>
+            <p className="text-slate-700 dark:text-slate-100">Pixel-perfect interfaces that drive engagement. Design at Metalift is not just about aesthetics it’s about usability, brand trust, and conversion. We create design systems that grow with your product.</p>
+            <p>Elite delivery with zero technical debt. Our engineering squad operates as an extension of your team. We build robust, secure, and high-performing applications using industry-leading practices.</p>
           </div>
           <div className="grid gap-6">
           {services.map((service) => (

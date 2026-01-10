@@ -114,7 +114,7 @@ export const projects = [
     description:
       'A multi-market B2B commerce platform powering circular distribution for FMCGs across East Africa. Delivered unified web, Android, and operations dashboards.',
     stats: ['+64% order volume', '99.98% uptime'],
-    image: '/images/apps/retrade-icon.png',
+    image: '/images/apps/retradelogo.png',
   },
   {
     title: 'GameBaze Studios',

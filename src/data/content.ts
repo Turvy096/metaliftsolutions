@@ -143,7 +143,7 @@ export const testimonials = [
     name: 'Derrick A',
     role: 'Head of Product, GameBaze',
     quote:
-      'From concept to launch, they matched our pace and elevated the UX at every turn. The polish is on par with global studios.',
+      'From concept to launch, they matched our pace and elevated the UX at every turn. The polish is on par with global studios. Zero dissapointments ',
   },
 ];
 

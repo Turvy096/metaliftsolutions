@@ -4,7 +4,7 @@ interface Project {
   title: string;
   description: string;
   image: string;
-  link: string;
+  link?: string;  // Made optional with ?
 }
 
 interface ProjectsSectionProps {
@@ -14,7 +14,7 @@ interface ProjectsSectionProps {
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
   return (
     <a
-      href={project.link}
+      href={project.link || '#'}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] w-full cursor-pointer active:scale-[0.98] no-underline"

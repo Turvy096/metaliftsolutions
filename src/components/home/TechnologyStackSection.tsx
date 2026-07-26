@@ -26,6 +26,7 @@ const techCategories: TechCategory[] = [
     items: [
       { name: 'JAVA', icon: 'https://cdn.simpleicons.org/openjdk/ED8B00' },
       { name: 'KOTLIN', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
+      { name: 'GOLANG', icon: 'https://cdn.simpleicons.org/go/00ADD8' },
     ],
   },
   {

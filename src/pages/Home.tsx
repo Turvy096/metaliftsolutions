@@ -99,7 +99,7 @@ const Home = () => {
           servicesGridRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
         }`}
       >
-        <ServicesGrid services={cleanedServices} highlights={filteredHighlights} />
+        <ServicesGrid  />
       </div>
 
       {/* ProcessSection REMOVED */}
@@ -113,7 +113,7 @@ const Home = () => {
           projectsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
         }`}
       >
-        <ProjectsSection projects={projects} />
+        <ProjectsSection projects={[]}  />
       </div>
 
       {/* FAQ Section */}
@@ -123,7 +123,7 @@ const Home = () => {
           faqRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
         }`}
       >
-        <FAQSection faqs={faqs} />
+        <FAQSection />
       </div>
 
       {/* TestimonialsSection - ADDED BACK with ID */}
@@ -134,7 +134,7 @@ const Home = () => {
           testimonialsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
         }`}
       >
-        <TestimonialsSection testimonials={testimonials} />
+        <TestimonialsSection  />
       </div>
     </div>
   );

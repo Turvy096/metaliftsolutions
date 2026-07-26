@@ -91,8 +91,8 @@ const ContactSection: React.FC = () => {
           </ul>
         </div>
 
-        {/* Right Form Card */}
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-md dark:border-white/10 dark:bg-white/5">
+        {/* Right Form Card - Added stronger shadow */}
+        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition-shadow duration-300 dark:border-white/10 dark:bg-white/5">
           <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
             Get in touch With us for any questions..
           </h3>

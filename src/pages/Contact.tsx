@@ -147,8 +147,8 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Form */}
-          <div className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-6 md:p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
+          {/* Form - Added stronger shadow */}
+          <div className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-6 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition-shadow duration-300 dark:border-white/10 dark:bg-white/5">
             <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Ready to Get Started?</h2>
             <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">Share your idea with us, and we'll help you build it faster, and more efficiently. Please indicate your Full Name, Email and Quotation and any need for your request and indicate whether or not you want to protect your business idea by signing an NDA.</p>
 

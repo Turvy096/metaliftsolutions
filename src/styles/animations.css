@@ -1,0 +1,270 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+:root {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8f9fa;
+  --color-text: #1f2933;
+  --color-muted: #6b7280;
+  --color-accent: #e34813;
+  --color-border: rgba(227, 72, 19, 0.12);
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #1f2933;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(227, 72, 19, 0.24);
+  color: #fff;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Section entrance animations */
+@keyframes popIn {
+  0% {
+    transform: scale(0.8) translateY(30px);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) translateY(-5px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base animation classes - elements start hidden */
+.animate-popIn {
+  opacity: 0;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.animate-fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slideUp {
+  opacity: 0;
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.animate-slideUpStagger {
+  opacity: 0;
+  animation: slideUpStagger 0.8s ease-out forwards;
+}
+
+/* Delay classes - elements start hidden */
+.animation-delay-100 {
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+  opacity: 0;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+.animation-delay-900 {
+  animation-delay: 0.9s;
+  opacity: 0;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+/* Stagger children - for elements that need staggered animation */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUpStagger 0.8s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.8s; }
+.stagger-children > *:nth-child(9) { animation-delay: 0.9s; }
+.stagger-children > *:nth-child(10) { animation-delay: 1s; }
+
+/* Section transition classes for scroll animations */
+.section-transition {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom Section Background Classes */
+.section-white {
+  background-color: #ffffff;
+  color: #1f2933;
+}
+
+.section-light {
+  background-color: #f8f9fa;
+  color: #1f2933;
+}
+
+.section-dark {
+  background-color: #1f2933;
+  color: #ffffff;
+}
+
+.section-transparent {
+  background-color: transparent;
+  color: #1f2933;
+}
+
+.section-warm {
+  background-color: #fdf5ef;
+  color: #1f2933;
+}
+
+.section-orange {
+  background: linear-gradient(135deg, #e34813, #c73d10);
+  color: #ffffff;
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, #fdf5ef, #ffffff);
+  color: #1f2933;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0b1220;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a2a4a;
+}

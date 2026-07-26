@@ -2,36 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
 :root {
-  color-scheme: light dark;
-  --color-background: #fdf5ef;
+  color-scheme: light;
+  --color-background: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-alt: #fff1e6;
+  --color-surface-alt: #f8f9fa;
   --color-text: #1f2933;
   --color-muted: #6b7280;
   --color-accent: #e34813;
   --color-border: rgba(227, 72, 19, 0.12);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #0b1220;
-    --color-surface: rgba(15, 23, 42, 0.75);
-    --color-surface-alt: rgba(15, 23, 42, 0.65);
-    --color-text: #e2e8f0;
-    --color-muted: #9ca3af;
-    --color-accent: #f78a5c;
-    --color-border: rgba(247, 138, 92, 0.25);
-  }
-}
-
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: var(--color-background);
-  color: var(--color-text);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #1f2933;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -46,4 +39,163 @@ html {
 ::selection {
   background: rgba(227, 72, 19, 0.24);
   color: #fff;
+}
+
+/* ============================================
+   ANIMATIONS - Slide Up from Bottom
+   ============================================ */
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Animation Classes - Elements start hidden */
+.animate-slideUp {
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-fadeInUp {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-popIn {
+  opacity: 0;
+  animation: popIn 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Delay Classes */
+.animation-delay-100 {
+  animation-delay: 0.1s;
+}
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+.animation-delay-900 {
+  animation-delay: 0.9s;
+}
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Stagger children - for elements that need staggered animation */
+.stagger-children > * {
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.7s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.8s; }
+.stagger-children > *:nth-child(9) { animation-delay: 0.9s; }
+.stagger-children > *:nth-child(10) { animation-delay: 1s; }
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom Section Background Classes - Use these in your sections */
+.section-white {
+  background-color: #ffffff;
+  color: #1f2933;
+}
+
+.section-light {
+  background-color: #f8f9fa;
+  color: #1f2933;
+}
+
+.section-dark {
+  background-color: #1f2933;
+  color: #ffffff;
+}
+
+.section-transparent {
+  background-color: transparent;
+  color: #1f2933;
+}
+
+.section-warm {
+  background-color: #fdf5ef;
+  color: #1f2933;
+}
+
+.section-orange {
+  background: linear-gradient(135deg, #e34813, #c73d10);
+  color: #ffffff;
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, #fdf5ef, #ffffff);
+  color: #1f2933;
 }

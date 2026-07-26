@@ -51,9 +51,7 @@ const Projects = () => (
     <section className="relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-[#fef4ee] transition-colors duration-300 dark:from-night dark:via-night/90 dark:to-slate/70" />
       <div className="relative mx-auto flex max-w-5xl flex-col gap-8 px-4 pb-16 text-center sm:px-6 lg:px-8">
-        <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#ffd9c9] bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#e34813] shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/5 dark:text-brand-200">
-          Case studies
-        </span>
+
         <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
           Products crafted with partners who expect dependable, high-performance delivery.
         </h1>

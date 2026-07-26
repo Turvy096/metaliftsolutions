@@ -1,265 +1,189 @@
-﻿import { useEffect, useRef, useState, type FormEvent, type ChangeEvent, type FocusEvent } from 'react';
-import emailjs from '@emailjs/browser';
+﻿import React, { useState } from 'react';
+import Header from '../components/Header';
 
-type SubmitState = 'idle' | 'loading' | 'success' | 'error';
-type FieldKey = 'name' | 'email' | 'message';
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    budget: '',
+    message: '',
+    nda: false,
+    countryCode: '+254',
+    currency: 'KES',
+  });
 
-const EMAILJS_SERVICE_ID = 'service_zykv7yb';
-const EMAILJS_TEMPLATE_ID = 'template_l5exiuh';
-const EMAILJS_PUBLIC_KEY = 'cqw9St8CPyK5hCvZg';
-const MAX_MESSAGE_LENGTH = 1000;
-const NAME_PATTERN = /^[a-zA-Z\s]{2,50}$/;
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
 
-const Contact = () => {
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
-     <div className="space-y-16 pb-16 sm:space-y-20 sm:pb-20">
-      <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#fef4ee] transition-colors duration-300 dark:from-night dark:via-night/90 dark:to-slate/70" />
-      <div className="relative mx-auto flex max-w-5xl flex-col gap-8 px-4 pb-16 text-center sm:px-6 lg:px-8">
-        <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-brand-500 shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/5 dark:text-brand-200">
-          Contact
-        </span>
-        <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-          Tell us about the Idea you have and we will help bring it to life.
-        </h1>
-        <p className="mx-auto max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          We take on a limited number of partnerships at a time so every engagement gets senior focus. Share a few
-          details and we&apos;ll follow up with an introductory session.
-        </p>
-      </div>
-    </section>
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" aria-hidden="true">
-      </div>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <Header />
 
-      
+      {/* Hero-style Header with different background */}
+      <section className="relative overflow-hidden pt-24">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Office team collaboration"
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(11, 18, 32, 0.85)' }}
+          />
+        </div>
 
-      <section className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-x-16 gap-y-16 lg:grid-cols-2">
-          
-          {/* Left Side: Metalift Branding */}
-          <div className="max-w-xl">
-            <span className="inline-flex items-center rounded-full border border-brand-500/30 bg-brand-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-brand-400">
-              Get in touch
-            </span>
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Start now! Partner with <span className="text-brand-400">Metalift</span> to boost your business.
+        <div
+          className="absolute inset-x-0 -top-40 h-[24rem]"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(11, 18, 32, 0.95), transparent)'
+          }}
+        />
+
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center py-20 px-4 text-center sm:px-6 lg:px-8">
+          <div className="max-w-4xl space-y-6">
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.2] sm:leading-[1.3] lg:leading-[1.4] whitespace-nowrap animate-slideUp">
+              Let's Turn Your Idea Into Reality
             </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-300">
-              From Nairobi to the world, we help teams scale their digital products with senior-level 
-              engineering and strategic focus. Tell us your vision, and let's lift your product together.
+            <p className="text-lg leading-relaxed text-white/80 sm:text-xl animate-slideUp animation-delay-200">
+              Ready to turn your software or app idea into reality? Fill out the
+              form below to get started with our expert development team.
             </p>
-            
-            <div className="mt-10 flex flex-col gap-y-6 border-l border-white/10 pl-6">
-               <div>
-                 <p className="text-sm font-semibold text-white">Global Reach</p>
-                 <p className="text-sm text-slate-400">Operating across Africa, Europe, and the Middle East.</p>
-               </div>
-               <div>
-                 <p className="text-sm font-semibold text-white">Rapid Response</p>
-                 <p className="text-sm text-slate-400">Our team typically responds within 6 business hours.</p>
-               </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid items-start gap-12 lg:grid-cols-2">
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
+                Driving Digital Growth
+                <br />
+                Changing Technology
+              </h1>
+              <p className="mt-6 max-w-lg text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+               We help startups and growing businesses turn their ideas into secure, scalable digital products. Smart technology meets practical execution to get you to market faster.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {/* Email */}
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: '#0d1a30' }}>
+                  <svg className="h-5 w-5" fill="none" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">EMAIL</p>
+                  <a href="mailto:metaliftsolutions@gmail.com" className="mt-1 block text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
+                    metaliftsolutions@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              {/* Phone */}
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: '#0d1a30' }}>
+                  <svg className="h-5 w-5" fill="none" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">PHONE</p>
+                  <a href="tel:+254740025607" className="mt-1 block text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
+                    +254 740 025 607
+                  </a>
+                </div>
+              </div>
+
+              {/* Location */}
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: '#0d1a30' }}>
+                  <svg className="h-5 w-5" fill="none" stroke="#ffffff" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">LOCATION</p>
+                  <p className="mt-1 text-base font-medium text-slate-900 dark:text-white">Nairobi, Kenya</p>
+                </div>
+              </div>
+
+              {/* WhatsApp */}
+              <div className="flex items-start gap-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: '#0d1a30' }}>
+                  <svg className="h-5 w-5" fill="#ffffff" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">WHATSAPP</p>
+                  <a href="https://wa.me/254740025607" target="_blank" rel="noopener noreferrer" className="mt-1 block text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
+                    +254 740 025 607
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right Side: The Form */}
-          <div className="relative">
-            {/* Ambient Glow behind form */}
-            <div className="absolute -inset-4 -z-10 bg-brand-500/10 blur-3xl rounded-full" />
-            <ContactForm />
+          {/* Form */}
+          <div className="rounded-2xl border border-slate-100 bg-white p-8 shadow-sm dark:border-white/10 dark:bg-white/5">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Ready to Get Started?</h2>
+            <p className="mt-2 text-slate-600 dark:text-slate-300">Share your idea with us, and we'll help you build it faster, and more efficiently. Please indicate your Full Name, Email and Quotation and any need for your request and indicate whether or not you want to protect your business idea by signing an NDA.</p>
+
+            <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+              <div>
+                <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">How can we help you? <span className="text-red-500">*</span></label>
+                <textarea
+                  name="message"
+                  required
+                  rows={3}
+                  placeholder="Tell us about your project"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full resize-none border-0 border-b border-slate-200 bg-transparent px-0 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#0d1a30] focus:outline-none focus:ring-0 dark:border-white/20 dark:text-white"
+                />
+              </div>
+
+              <div className="flex items-start gap-3">
+                <label htmlFor="nda" className="text-sm text-slate-600 dark:text-slate-300">
+                Happy to work with you!
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#0d1a30]/40"
+                style={{ backgroundColor: '#0d1a30' }}
+              >
+                Send Message
+              </button>
+            </form>
           </div>
         </div>
       </section>
     </div>
-  );
-};
-
-const ContactForm = () => {
-  const [state, setState] = useState<SubmitState>('idle');
-  const [error, setError] = useState<string | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldKey, string>>>({});
-  const [message, setMessage] = useState("");
-  const [overlayState, setOverlayState] = useState<'hidden' | 'loading' | 'success'>('hidden');
-  
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const overlayTimeoutRef = useRef<number>();
-
-  useEffect(() => {
-    return () => {
-      if (overlayTimeoutRef.current) window.clearTimeout(overlayTimeoutRef.current);
-    };
-  }, []);
-
-  // Auto-expansion logic
-  useEffect(() => {
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "inherit";
-      const scrollHeight = textareaRef.current.scrollHeight;
-      textareaRef.current.style.height = `${scrollHeight}px`;
-    }
-  }, [message]);
-
-  const getFieldClasses = (hasError: boolean) => [
-    'w-full rounded-xl border px-4 py-3 text-sm transition focus:outline-none focus:ring-2',
-    hasError
-      ? 'border-red-400 bg-night/70 text-white placeholder:text-slate-500 focus:ring-red-400/30'
-      : 'border-white/10 bg-night/70 text-white placeholder:text-slate-500 focus:border-brand-400 focus:ring-brand-400/40',
-  ].join(' ');
-
-  const validators: Record<FieldKey, (value: string) => string | null> = {
-    name: (v) => (!v.trim() ? 'Name is required.' : !NAME_PATTERN.test(v.trim()) ? 'Use 2-50 alphabetic characters.' : null),
-    email: (v) => (!v.trim() ? 'Email is required.' : !EMAIL_PATTERN.test(v.trim()) ? 'Enter a valid email address.' : null),
-    message: (v) => (!v.trim() ? 'Please tell us about your project.' : v.trim().length < 10 ? 'Message too short.' : null),
-  };
-
-  const validateField = (name: FieldKey, value: string) => {
-    const errorMessage = validators[name](value);
-    setFieldErrors(prev => {
-      const next = { ...prev };
-      if (errorMessage) next[name] = errorMessage;
-      else delete next[name];
-      return next;
-    });
-    return !errorMessage;
-  };
-
-  const handleFieldBlur = (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    if (name === 'name' || name === 'email' || name === 'message') validateField(name, value);
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    // Validation
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const isNameValid = validateField('name', name);
-    const isEmailValid = validateField('email', email);
-    const isMsgValid = validateField('message', message);
-
-    if (!isNameValid || !isEmailValid || !isMsgValid) {
-      setState('error');
-      setError('Please fix highlighted fields.');
-      return;
-    }
-
-    setState('loading');
-    setOverlayState('loading');
-
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: name,
-          from_email: email,
-          message: `Company: ${formData.get('company')}\nTimeline: ${formData.get('timeline')}\nBudget: ${formData.get('budget')}\n\nMessage: ${message}`,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-
-      form.reset();
-      setMessage("");
-      setState('success');
-      setOverlayState('success');
-      overlayTimeoutRef.current = window.setTimeout(() => setOverlayState('hidden'), 5000);
-    } catch (err) {
-      setError('Failed to send. Please try again.');
-      setState('error');
-      setOverlayState('hidden');
-    }
-  };
-
-  return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="relative space-y-4 rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all"
-    >
-      {/* Success/Loading Overlay */}
-      {overlayState !== 'hidden' && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center rounded-2xl bg-night/95 p-6 text-center animate-in fade-in duration-300">
-          {overlayState === 'loading' ? (
-            <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-500/20 border-t-brand-500" />
-          ) : (
-            <div className="text-brand-400">
-              <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <p className="mt-4 text-lg font-semibold text-white">Message Sent!</p>
-              <p className="text-sm text-slate-400">We'll follow up within one business day.</p>
-            </div>
-          )}
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <input
-          name="name"
-          type="text"
-          placeholder="Name *"
-          onBlur={handleFieldBlur}
-          className={getFieldClasses(Boolean(fieldErrors.name))}
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="Work Email *"
-          onBlur={handleFieldBlur}
-          className={getFieldClasses(Boolean(fieldErrors.email))}
-        />
-      </div>
-
-      <input
-        name="company"
-        type="text"
-        placeholder="Company / Team"
-        className={getFieldClasses(false)}
-      />
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <select name="timeline" className={getFieldClasses(false)}>
-          <option value="" disabled selected>Ideal timeline</option>
-          <option value="0-3 months">0-3 months</option>
-          <option value="3-6 months">3-6 months</option>
-          <option value="6 months+">6 months+</option>
-        </select>
-        <select name="budget" className={getFieldClasses(false)}>
-          <option value="" disabled selected>Estimated investment</option>
-          <option value="under-1.5m">Under KES 1.5M</option>
-          <option value="1.5m-3m">KES 1.5M - 3M</option>
-          <option value="3m+">Above KES 3M</option>
-        </select>
-      </div>
-
-      <textarea
-        ref={textareaRef}
-        name="message"
-        rows={1}
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onBlur={handleFieldBlur}
-        placeholder="How can we help? *"
-        className={`${getFieldClasses(Boolean(fieldErrors.message))} min-h-[48px] overflow-hidden resize-none`}
-      />
-
-      {error && state === 'error' && <p className="text-xs text-red-400">{error}</p>}
-
-      <button
-        type="submit"
-        disabled={state === 'loading'}
-        className="w-full rounded-xl bg-brand-500 py-4 font-bold text-white shadow-lg shadow-brand-500/20 transition hover:bg-brand-600 active:scale-[0.98] disabled:opacity-50"
-      >
-        {state === 'loading' ? 'Sending...' : 'Send Inquiry'}
-      </button>
-
-      <p className="text-center text-[10px] uppercase tracking-widest text-slate-500">
-        Secure & Private • One Business Day Response
-      </p>
-    </form>
   );
 };
 

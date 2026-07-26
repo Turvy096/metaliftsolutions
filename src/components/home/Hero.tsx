@@ -26,11 +26,9 @@ const Hero: React.FC = () => {
   };
 
   const handleSeeProcess = () => {
-    // If we're on the home page, scroll to testimonials section
     if (location.pathname === '/') {
       scrollToTarget('#testimonials');
     } else {
-      // If not on home page, navigate to home first then scroll
       navigate('/');
       setTimeout(() => {
         scrollToTarget('#testimonials');
@@ -39,7 +37,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-screen overflow-hidden">
       {/* Background with keyboard image */}
       <div className="absolute inset-0 z-0">
         <img
@@ -63,28 +61,28 @@ const Hero: React.FC = () => {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center min-h-[calc(100vh+80px)] gap-14 px-4 pb-20 pt-32 text-center sm:px-6 lg:px-8">
-        <div className="max-w-4xl space-y-8">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.2] sm:leading-[1.3] lg:leading-[1.4] animate-slideUp">
+      <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center min-h-[50vh] md:min-h-[55vh] lg:min-h-[calc(100vh+80px)] gap-6 sm:gap-14 px-4 pb-8 sm:pb-20 pt-24 sm:pt-32 text-center sm:px-6 lg:px-8">
+        <div className="max-w-4xl space-y-3 sm:space-y-8">
+          <h1 className="text-3xl sm:text-[2.25rem] md:text-[2.75rem] lg:text-6xl font-bold tracking-tight text-white leading-[1.2] sm:leading-[1.3] lg:leading-[1.4] animate-slideUp">
             Digital products engineered for
             measurable performance.
           </h1>
-          <p className="text-lg leading-relaxed text-white/80 sm:text-xl animate-slideUp animation-delay-200 max-w-3xl mx-auto">
+          <p className="text-[15px] sm:text-[1.125rem] md:text-[1.25rem] lg:text-xl leading-relaxed text-white/80 animate-slideUp animation-delay-200 max-w-3xl mx-auto px-2 sm:px-0">
             Metalift Solutions blends strategy, UX, and engineering into end-to-end experiences for
             ambitious teams across Africa and beyond. Every engagement is grounded in outcomes, scale,
             and operational clarity.
           </p>
         </div>
-        <div className="flex flex-col items-center gap-5 sm:flex-row sm:gap-8 stagger-children">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 stagger-children">
           <button
             onClick={handleStartProject}
-            className="inline-flex items-center justify-center rounded-xl px-10 py-5 text-lg font-semibold uppercase transition hover:scale-105 min-w-[200px] tracking-wide bg-orange-500 text-white hover:bg-orange-600"
+            className="inline-flex items-center justify-center rounded-xl px-6 sm:px-10 py-3 sm:py-5 text-sm sm:text-lg font-semibold uppercase transition hover:scale-105 min-w-[160px] sm:min-w-[200px] tracking-wide bg-orange-500 text-white hover:bg-orange-600 w-auto"
           >
             Start a project
           </button>
           <button
             onClick={handleSeeProcess}
-            className="inline-flex items-center justify-center rounded-xl px-10 py-5 text-lg font-semibold uppercase transition hover:scale-105 min-w-[200px] tracking-wide bg-white/10 backdrop-blur text-white hover:bg-white/20 border border-white/30"
+            className="inline-flex items-center justify-center rounded-xl px-6 sm:px-10 py-3 sm:py-5 text-sm sm:text-lg font-semibold uppercase transition hover:scale-105 min-w-[160px] sm:min-w-[200px] tracking-wide bg-white/10 backdrop-blur text-white hover:bg-white/20 border border-white/30 w-auto"
           >
             See our process
           </button>

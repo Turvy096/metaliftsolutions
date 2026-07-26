@@ -70,26 +70,26 @@ const TechnologyStackSection: React.FC = () => {
   const items = currentCategory?.items || [];
 
   return (
-    <section className="py-14 min-h-[550px]" style={{ backgroundColor: '#0b1220' }}>
+    <section className="py-10 sm:py-14 min-h-[400px] sm:min-h-[550px]" style={{ backgroundColor: '#0b1220' }}>
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-6xl mx-auto mb-9">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 whitespace-nowrap">
+        <div className="text-center max-w-6xl mx-auto mb-6 sm:mb-9">
+          <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3">
             The Tech Stack We Use to Build Profitable Solutions
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-5xl mx-auto text-center whitespace-nowrap">
+          <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-4xl mx-auto text-center px-2">
             We leverage modern technologies to build fast, secure, and reliable digital solutions tailored to your business.
           </p>
         </div>
 
-        {/* Tabs - Larger buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        {/* Tabs - Responsive buttons */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 md:mb-10">
           {techCategories.map((category) => (
             <button
               key={category.name}
               onClick={() => setActiveTab(category.name)}
               className={`
-                px-10 py-4 rounded-full text-lg font-medium transition-all duration-300
+                px-4 sm:px-6 md:px-10 py-2 sm:py-3 md:py-4 rounded-full text-xs sm:text-base md:text-lg font-medium transition-all duration-300
                 ${
                   activeTab === category.name
                     ? 'bg-white text-black'
@@ -102,12 +102,12 @@ const TechnologyStackSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Hexagon Grid - Larger icons */}
-        <div className="flex flex-wrap justify-center gap-8 md:gap-10">
+        {/* Hexagon Grid - Responsive icons with reduced vertical spacing on mobile */}
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-6 md:gap-8 lg:gap-10">
           {items.map((tech) => (
             <div key={tech.name} className="flex flex-col items-center group">
               <div
-                className="relative w-[140px] h-[150px] flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+                className="relative w-[70px] sm:w-[100px] md:w-[120px] lg:w-[140px] h-[75px] sm:h-[110px] md:h-[130px] lg:h-[150px] flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
                 style={{
                   clipPath:
                     'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
@@ -117,11 +117,11 @@ const TechnologyStackSection: React.FC = () => {
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className="w-16 h-16 object-contain"
+                  className="w-7 sm:w-10 md:w-12 lg:w-16 h-7 sm:h-10 md:h-12 lg:h-16 object-contain"
                 />
               </div>
 
-              <span className="mt-3 text-sm font-medium tracking-widest text-gray-400 uppercase">
+              <span className="mt-1.5 sm:mt-3 text-[10px] sm:text-xs md:text-sm font-medium tracking-widest text-gray-400 uppercase">
                 {tech.name}
               </span>
             </div>

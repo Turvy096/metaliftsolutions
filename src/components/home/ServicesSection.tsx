@@ -76,66 +76,64 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
   return (
     <section className="pt-2 pb-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - Full width text with tech stack heading size */}
-        <div className="text-center max-w-full mx-auto mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3">
+        {/* Header */}
+        <div className="text-center max-w-full mx-auto mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-3">
             Industries We Serve.
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-full">
+          <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-full px-2">
            We help businesses across various industries build smart, successful digital products. Our mobile app solutions improve operations, enhance user experience, and drive long-term growth.
           </p>
         </div>
 
-        {/* Industry cards - minimal gap */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5">
+        {/* Industry cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-0.5">
           {industries.map((industry, index) => {
             const Icon = industry.icon;
 
             return (
               <div
                 key={industry.title}
-                className="group relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 bg-white border border-slate-200"
+                className="group relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 bg-white border border-slate-200 min-h-[280px] sm:min-h-[320px]"
               >
                 {/* Default content */}
-                <div className="relative z-10 flex flex-col items-center text-center px-8 py-10 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
-                  <div className="mb-4">
-                    <Icon className="h-12 w-12 text-slate-800 stroke-[1.5]" />
+                <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+                  <div className="mb-3 sm:mb-4">
+                    <Icon className="h-10 w-10 sm:h-12 sm:w-12 text-slate-800 stroke-[1.5]" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1 sm:mb-2">
                     {industry.title}
                   </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3 sm:line-clamp-none">
                     {industry.description}
                   </p>
                 </div>
 
-                {/* Hover state with animations from below */}
+                {/* Hover state */}
                 <div className="absolute inset-0 z-20 opacity-0 group-hover:opacity-100 transition-all duration-500">
                   <img
                     src={industry.image}
                     alt={industry.title}
                     className="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+                    loading="lazy"
                   />
-                  {/* Night blue overlay */}
                   <div
                     className="absolute inset-0"
                     style={{ backgroundColor: 'rgba(11, 18, 32, 0.75)' }}
                   />
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 overflow-hidden">
-                    {/* Title - pops up from below */}
-                    <h3 className="text-2xl font-bold text-white mb-4 drop-shadow-lg transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6 overflow-hidden">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 drop-shadow-lg transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                       {industry.title}
                     </h3>
 
-                    {/* Button - pops up from below with delay */}
                     <a
                       href="/contact"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300"
+                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 text-sm sm:text-base"
                     >
                       Explore more
                       <svg
-                        className="w-4 h-4"
+                        className="w-3 h-3 sm:w-4 sm:h-4"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

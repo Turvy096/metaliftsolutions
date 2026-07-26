@@ -64,7 +64,7 @@ const Home = () => {
   const testimonialsRef = useScrollAnimation();
 
   return (
-    <div className="space-y-10 pb-16 sm:space-y-12 sm:pb-20">
+    <div className="space-y-8 sm:space-y-10 md:space-y-12 pb-12 sm:pb-16 md:pb-20">
       {/* Hero Section */}
       <div id="hero">
         <Hero />

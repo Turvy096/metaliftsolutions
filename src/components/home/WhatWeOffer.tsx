@@ -19,7 +19,7 @@ const WhatWeOffer: React.FC = () => {
       id: 'mobile',
       title: 'Mobile App Development',
       description: 'Native and cross-platform mobile applications for iOS and Android. Engaging, performant, and user-friendly apps that delight users.',
-      details: 'We develop mobile apps for startups and enterprises. Our team builds apps that solve real business problems, from e-commerce and fintech to logistics and healthcare. We handle the entire process  from concept to App Store and Google Play deployment.',
+      details: 'We develop mobile apps for startups and enterprises. Our team builds apps that solve real business problems, from e-commerce and fintech to logistics and healthcare. We handle the entire process from concept to App Store and Google Play deployment.',
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -67,7 +67,7 @@ const WhatWeOffer: React.FC = () => {
       id: 'saas',
       title: 'SaaS Development',
       description: 'Custom SaaS software development for your business needs. Scalable, multi tenant solutions with subscription management and enterprise grade security.',
-      details: 'We build SaaS platforms for businesses that want to offer software as a service. We handle the technical complexity - multi tenant architecture, user authentication, subscription billing, and payment processing  so you can focus on your product and customers.',
+      details: 'We build SaaS platforms for businesses that want to offer software as a service. We handle the technical complexity - multi tenant architecture, user authentication, subscription billing, and payment processing so you can focus on your product and customers.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: (
         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -125,7 +125,7 @@ const WhatWeOffer: React.FC = () => {
         >
           <div className="p-6 sm:p-8 lg:p-10">
             {/* Service Icons */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-3 sm:mb-6">
               {services.map((service) => (
                 <button
                   key={service.id}
@@ -151,20 +151,20 @@ const WhatWeOffer: React.FC = () => {
             {/* Content */}
             <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start min-h-[380px]">
               {/* Left - Description */}
-              <div className="flex-1 pt-16">
-                <h3 className="text-3xl font-bold text-white mb-3">
+              <div className="flex-1 pt-8 sm:pt-16">
+                <h3 className="text-xl sm:text-3xl font-bold text-white mb-3">
                   {currentService.title}
                 </h3>
-                <p className="text-white/80 leading-relaxed text-lg mb-3">
+                <p className="text-white/80 leading-relaxed text-base sm:text-lg mb-3">
                   {currentService.description}
                 </p>
-                <p className="text-white/80 leading-relaxed text-lg">
+                <p className="text-white/80 leading-relaxed text-base sm:text-lg">
                   {currentService.details}
                 </p>
               </div>
 
               {/* Right - Image */}
-              <div className="flex-1 w-full pt-12">
+              <div className="flex-1 w-full pt-6 sm:pt-12">
                 <div className="rounded-2xl overflow-hidden shadow-lg">
                   <img
                     src={currentService.image}

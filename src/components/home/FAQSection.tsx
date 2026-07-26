@@ -49,25 +49,25 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16" style={{ backgroundColor: '#0b1220' }}>
+    <section className="py-10 sm:py-16" style={{ backgroundColor: '#0b1220' }}>
       <div className="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
         {/* Title */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 sm:mb-12 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
             Frequently Asked Questions
           </h2>
-          <p className="text-gray-400 mt-4 max-w-4xl mx-auto text-lg whitespace-nowrap">
+          <p className="text-gray-400 mt-3 sm:mt-4 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg px-2">
             Find answers to common questions about our mobile app development services.
           </p>
         </div>
 
-        {/* FAQ Items - Same design as tech stack tabs */}
-        <div className="mx-auto max-w-4xl space-y-4">
+        {/* FAQ Items */}
+        <div className="mx-auto max-w-4xl space-y-3 sm:space-y-4">
           {visibleFaqs.map((faq, index) => (
             <div
               key={faq.question}
               className={`
-                rounded-full border transition-all duration-300
+                rounded-xl sm:rounded-full border transition-all duration-300
                 ${
                   openIndex === index
                     ? 'bg-white text-black border-white'
@@ -78,24 +78,24 @@ const FAQSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                className="flex w-full items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 text-left"
               >
-                <span className={`text-base font-medium transition-colors duration-300 ${
+                <span className={`text-xs sm:text-sm md:text-base font-medium transition-colors duration-300 flex-1 ${
                   openIndex === index ? 'text-black' : 'text-gray-400 hover:text-gray-200'
                 }`}>
                   {faq.question}
                 </span>
 
-                {/* Circle icon - matches tech stack style */}
+                {/* Circle icon */}
                 <span
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                  className={`flex h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
                     openIndex === index
                       ? 'bg-gray-200 text-black'
                       : 'bg-transparent text-gray-400 border border-gray-700 hover:border-gray-500 hover:text-gray-200'
                   }`}
                 >
                   <svg
-                    className={`h-4 w-4 transition-transform duration-300 ${
+                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 transition-transform duration-300 ${
                       openIndex === index ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -109,8 +109,8 @@ const FAQSection: React.FC = () => {
               </button>
 
               {openIndex === index && (
-                <div className="border-t border-gray-200/30 px-6 pb-5 pt-1">
-                  <p className="text-sm leading-relaxed text-gray-600">
+                <div className="border-t border-gray-200/30 px-4 sm:px-6 pb-4 sm:pb-5 pt-1">
+                  <p className="text-xs sm:text-sm leading-relaxed text-gray-600">
                     {faq.answer}
                   </p>
                 </div>
@@ -119,16 +119,16 @@ const FAQSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Read More / Read Less Button - Same as tech stack active button */}
-        <div className="mt-12 flex justify-center">
+        {/* Read More / Read Less Button */}
+        <div className="mt-8 sm:mt-12 flex justify-center">
           <button
             type="button"
             onClick={handleToggle}
-            className="inline-flex items-center gap-2 rounded-full bg-white px-10 py-4 text-lg font-medium text-black shadow-md transition hover:bg-gray-100 hover:scale-105"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-medium text-black shadow-md transition hover:bg-gray-100 hover:scale-105"
           >
             {isAllVisible ? 'Read Less' : 'Read More'}
             <svg
-              className={`h-4 w-4 transition-transform duration-300 ${
+              className={`h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 transition-transform duration-300 ${
                 isAllVisible ? 'rotate-180' : ''
               }`}
               fill="none"

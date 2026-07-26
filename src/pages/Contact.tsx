@@ -78,7 +78,9 @@ const Contact: React.FC = () => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Driving Digital Growth
                 <br />
-                Changing Technology
+                With Changing
+                <br />
+                Technology
               </h1>
               <p className="mt-4 md:mt-6 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
                We help startups and growing businesses turn their ideas into secure, scalable digital products. Smart technology meets practical execution to get you to market faster.

@@ -1,27 +1,38 @@
 name: 🚀 Deploy Website to InfinityFree via FTP
 
 on:
-    push:
-        branches:
-            - main # make sure this matches your branch name
+  push:
+    branches:
+      - main  #builds then deploys when changes are pushed to the main branch
 
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Upload dist folder via FTP
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ secrets.FTP_SERVER }}
-                  username: ${{ secrets.FTP_USERNAME }}
-                  password: ${{ secrets.FTP_PASSWORD }}
-                  server-dir: ${{ secrets.FTP_PATH }}/
-                  local-dir: ./dist/
-                  exclude: |
-                      **/.git*
-                      **/.github*
-                      **/node_modules/**
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload dist folder via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_PATH }}/
+          local-dir: ./dist/
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/**

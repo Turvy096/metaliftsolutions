@@ -8,6 +8,9 @@ import {
   CloudIcon,
   ShareIcon,
   CommandLineIcon,
+  GlobeAltIcon,
+  Squares2X2Icon,
+  ServerStackIcon,
 } from '@heroicons/react/24/outline';
 
 interface Service {
@@ -38,7 +41,7 @@ const WhatWeOffer: React.FC = () => {
       description: 'Full-stack web development with modern frameworks. Responsive, fast, and SEO optimized websites and web applications.',
       details: 'We build websites and web applications for businesses that need an online presence that converts. From corporate websites to complex dashboards and admin panels, we focus on performance, security, and user experience. Our team uses React, Next.js, and Node.js to deliver modern web solutions.',
       image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      icon: CodeBracketIcon
+      icon: GlobeAltIcon
     },
     {
       id: 'custom-software',
@@ -103,8 +106,8 @@ const WhatWeOffer: React.FC = () => {
           style={{ backgroundColor: '#0b1220' }}
         >
           <div className="p-6 sm:p-8 lg:p-10">
-            {/* Service Icons - Heroicons */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 mb-3 sm:mb-6">
+            {/* Service Icons */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 gap-y-6 sm:gap-y-4 md:gap-y-3 mb-6 sm:mb-8">
               {services.map((service) => {
                 const Icon = service.icon;
                 return (

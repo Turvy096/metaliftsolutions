@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { CheckIcon } from '@heroicons/react/24/outline';
+import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import {
   DevicePhoneMobileIcon,
   CodeBracketIcon,
@@ -25,8 +25,8 @@ interface Service {
 const WhatWeOffer: React.FC = () => {
   const [activeService, setActiveService] = useState<string>('mobile');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
 
   // Service data with Heroicons
   const services: Service[] = [
@@ -90,6 +90,12 @@ const WhatWeOffer: React.FC = () => {
 
   const currentService = services.find(s => s.id === activeService) || services[0];
 
+  // Handle service click
+  const handleServiceClick = (serviceId: string) => {
+    setActiveService(serviceId);
+    scrollToService(serviceId);
+  };
+
   // Function to scroll to a specific service
   const scrollToService = (serviceId: string) => {
     if (scrollContainerRef.current) {
@@ -111,46 +117,52 @@ const WhatWeOffer: React.FC = () => {
     }
   };
 
-  // Handle service click - stops auto-scrolling permanently
-  const handleServiceClick = (serviceId: string) => {
-    setActiveService(serviceId);
-    scrollToService(serviceId);
+  // Check scroll position to show/hide arrows
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
 
-    // Stop auto-scrolling when user manually clicks
-    setIsAutoScrolling(false);
-    if (autoScrollIntervalRef.current) {
-      clearInterval(autoScrollIntervalRef.current);
-      autoScrollIntervalRef.current = null;
+      setShowLeftArrow(scrollLeft > 10);
+      setShowRightArrow(scrollLeft < maxScroll - 10);
     }
   };
 
-  // Start auto-scrolling
-  const startAutoScroll = () => {
-    if (autoScrollIntervalRef.current) {
-      clearInterval(autoScrollIntervalRef.current);
+  // Handle arrow clicks
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -200,
+        behavior: 'smooth'
+      });
     }
-
-    autoScrollIntervalRef.current = setInterval(() => {
-      if (isAutoScrolling) {
-        const currentIndex = services.findIndex(s => s.id === activeService);
-        const nextIndex = (currentIndex + 1) % services.length;
-        const nextServiceId = services[nextIndex].id;
-
-        setActiveService(nextServiceId);
-        scrollToService(nextServiceId);
-      }
-    }, 3000); // Change tab every 3 seconds
   };
 
-  // Start auto-scroll on mount
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Check scroll position on scroll and resize
   useEffect(() => {
-    startAutoScroll();
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', checkScrollPosition);
+      window.addEventListener('resize', checkScrollPosition);
 
-    return () => {
-      if (autoScrollIntervalRef.current) {
-        clearInterval(autoScrollIntervalRef.current);
-      }
-    };
+      // Initial check
+      setTimeout(checkScrollPosition, 100);
+
+      return () => {
+        container.removeEventListener('scroll', checkScrollPosition);
+        window.removeEventListener('resize', checkScrollPosition);
+      };
+    }
   }, []);
 
   // Scroll to initial active service on mount
@@ -181,12 +193,30 @@ const WhatWeOffer: React.FC = () => {
           <div className="p-6 sm:p-8 lg:p-10">
             {/* Service Icons - Horizontal scroll on mobile */}
             <div className="relative">
+              {/* Left Arrow - Mobile only */}
+              <button
+                onClick={scrollLeft}
+                className={`
+                  absolute left-0 top-1/2 -translate-y-1/2 z-10
+                  md:hidden
+                  bg-[#0b1220]/80 backdrop-blur-sm
+                  text-white p-2 rounded-full
+                  border border-white/20
+                  transition-all duration-300
+                  hover:bg-[#0b1220] hover:scale-110
+                  ${showLeftArrow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+                `}
+                aria-label="Scroll left"
+              >
+                <ChevronLeftIcon className="w-5 h-5" />
+              </button>
+
               {/* Scroll container */}
               <div
                 ref={scrollContainerRef}
                 className="overflow-x-auto overflow-y-hidden scrollbar-hide"
               >
-                <div className="flex flex-nowrap gap-3 gap-y-6 sm:gap-y-4 md:gap-y-3 mb-6 sm:mb-8 min-w-max md:min-w-0">
+                <div className="flex flex-nowrap gap-3 gap-y-6 sm:gap-y-4 md:gap-y-3 mb-6 sm:mb-8 min-w-max md:min-w-0 px-1">
                   {services.map((service) => {
                     const Icon = service.icon;
                     return (
@@ -216,9 +246,39 @@ const WhatWeOffer: React.FC = () => {
                 </div>
               </div>
 
-              {/* Scroll indicators - optional */}
-              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0b1220] to-transparent pointer-events-none md:hidden"></div>
-              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0b1220] to-transparent pointer-events-none md:hidden"></div>
+              {/* Right Arrow - Mobile only */}
+              <button
+                onClick={scrollRight}
+                className={`
+                  absolute right-0 top-1/2 -translate-y-1/2 z-10
+                  md:hidden
+                  bg-[#0b1220]/80 backdrop-blur-sm
+                  text-white p-2 rounded-full
+                  border border-white/20
+                  transition-all duration-300
+                  hover:bg-[#0b1220] hover:scale-110
+                  ${showRightArrow ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}
+                `}
+                aria-label="Scroll right"
+              >
+                <ChevronRightIcon className="w-5 h-5" />
+              </button>
+
+              {/* Scroll indicators - gradient overlays (mobile only) */}
+              <div className={`
+                absolute left-0 top-0 bottom-0 w-12
+                bg-gradient-to-r from-[#0b1220] to-transparent
+                pointer-events-none md:hidden
+                transition-opacity duration-300
+                ${showLeftArrow ? 'opacity-100' : 'opacity-0'}
+              `} />
+              <div className={`
+                absolute right-0 top-0 bottom-0 w-12
+                bg-gradient-to-l from-[#0b1220] to-transparent
+                pointer-events-none md:hidden
+                transition-opacity duration-300
+                ${showRightArrow ? 'opacity-100' : 'opacity-0'}
+              `} />
             </div>
 
             {/* Content */}

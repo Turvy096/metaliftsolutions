@@ -14,7 +14,7 @@ const faqs: FAQ[] = [
   {
     question: 'How much does mobile app development cost?',
     answer:
-      'The cost depends on the complexity, features, and platforms. Simple apps usually start from $5,000–$15,000, while medium to complex apps range from $20,000 to $100,000+. We provide a detailed custom quote after understanding your requirements.',
+      'The cost depends on the complexity, features, and platforms.  We provide a detailed custom quote after understanding your requirements.',
   },
   {
     question: 'How long does it take to build a mobile app?',

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 interface Project {
   title: string;
@@ -11,6 +11,7 @@ interface Project {
 
 interface ProjectsSectionProps {
   projects: Project[];
+  onProjectClick?: (project: Project) => void;
 }
 
 const ProjectCard: React.FC<{
@@ -21,9 +22,9 @@ const ProjectCard: React.FC<{
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (project.isUnderDevelopment) {
       e.preventDefault();
+      e.stopPropagation();
       onProjectClick(project);
     }
-    // If it has a link (Retrade), let it open normally
   };
 
   return (
@@ -80,73 +81,11 @@ const ProjectCard: React.FC<{
   );
 };
 
-// Modal Component for Development Notice
-const DevelopmentModal: React.FC<{
-  project: Project | null;
-  onClose: () => void;
-}> = ({ project, onClose }) => {
-  if (!project) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <div
-        className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl transform transition-all"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <h3 className="text-xl font-bold text-slate-900">
-              {project.title}
-            </h3>
-          </div>
-          <button
-            onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 transition-colors"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="mb-6">
-          <p className="text-slate-600">
-            This project is currently in development. We're working hard to bring you an amazing experience.
-            Stay tuned for the launch!
-          </p>
-          {project.description && (
-            <p className="text-slate-500 text-sm mt-4">
-              {project.description}
-            </p>
-          )}
-        </div>
-
-        <button
-          onClick={onClose}
-          className="w-full rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold text-white uppercase transition hover:bg-orange-600 cursor-pointer"
-        >
-          Got it
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
+const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, onProjectClick }) => {
   const handleProjectClick = (project: Project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedProject(null), 300);
+    if (onProjectClick) {
+      onProjectClick(project);
+    }
   };
 
   return (
@@ -170,14 +109,6 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects }) => {
           ))}
         </div>
       </div>
-
-      {/* Development Modal */}
-      {isModalOpen && (
-        <DevelopmentModal
-          project={selectedProject}
-          onClose={handleCloseModal}
-        />
-      )}
     </section>
   );
 };

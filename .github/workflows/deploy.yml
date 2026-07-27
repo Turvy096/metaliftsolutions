@@ -1,8 +1,8 @@
-name: 🚀 Deploy Website to InfinityFree via FTP
+name: 🚀 Deploy Website to Truehost via FTP
 on:
   push:
     branches:
-      - main  # builds then deploys when changes are pushed to the main branch
+      - main
 
 jobs:
   deploy:

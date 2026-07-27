@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   ShoppingCartIcon,
   Cog6ToothIcon,
@@ -127,8 +128,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                       {industry.title}
                     </h3>
 
-                    <a
-                      href="/contact"
+                    <Link
+                      to="/contact"
                       className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 text-sm sm:text-base"
                     >
                       Explore more
@@ -145,7 +146,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

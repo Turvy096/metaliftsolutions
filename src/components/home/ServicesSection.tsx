@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   ShoppingCartIcon,
   Cog6ToothIcon,
@@ -74,6 +74,12 @@ const defaultIndustries: Industry[] = [
 const ServicesSection: React.FC<ServicesSectionProps> = ({
   industries = defaultIndustries,
 }) => {
+  const navigate = useNavigate();
+
+  const handleExploreMore = () => {
+    navigate('/contact');
+  };
+
   return (
     <section className="pt-2 pb-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -128,9 +134,9 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                       {industry.title}
                     </h3>
 
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 text-sm sm:text-base"
+                    <button
+                      onClick={handleExploreMore}
+                      className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-orange-500 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform translate-y-8 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-300 text-sm sm:text-base cursor-pointer border-none"
                     >
                       Explore more
                       <svg
@@ -146,7 +152,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         />
                       </svg>
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>

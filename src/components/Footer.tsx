@@ -151,7 +151,7 @@ const Footer = () => {
                   className="hover:text-white"
                   href="mailto:metaliftsolutions@gmail.com"
                 >
-                  metaliftsolutions@gmail.com
+                  info@metaliftsolutions.com
                 </a>
               </div>
             </li>

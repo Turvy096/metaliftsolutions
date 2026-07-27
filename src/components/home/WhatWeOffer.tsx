@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CheckIcon } from '@heroicons/react/24/outline';
 import {
   DevicePhoneMobileIcon,
@@ -24,6 +24,9 @@ interface Service {
 
 const WhatWeOffer: React.FC = () => {
   const [activeService, setActiveService] = useState<string>('mobile');
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const autoScrollIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
   // Service data with Heroicons
   const services: Service[] = [
@@ -87,6 +90,76 @@ const WhatWeOffer: React.FC = () => {
 
   const currentService = services.find(s => s.id === activeService) || services[0];
 
+  // Function to scroll to a specific service
+  const scrollToService = (serviceId: string) => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const button = container.querySelector(`[data-service-id="${serviceId}"]`) as HTMLElement;
+
+      if (button) {
+        // Calculate scroll position to center the button
+        const containerWidth = container.offsetWidth;
+        const buttonWidth = button.offsetWidth;
+        const buttonLeft = button.offsetLeft;
+        const scrollPosition = buttonLeft - (containerWidth / 2) + (buttonWidth / 2);
+
+        container.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  // Handle service click - stops auto-scrolling permanently
+  const handleServiceClick = (serviceId: string) => {
+    setActiveService(serviceId);
+    scrollToService(serviceId);
+
+    // Stop auto-scrolling when user manually clicks
+    setIsAutoScrolling(false);
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+      autoScrollIntervalRef.current = null;
+    }
+  };
+
+  // Start auto-scrolling
+  const startAutoScroll = () => {
+    if (autoScrollIntervalRef.current) {
+      clearInterval(autoScrollIntervalRef.current);
+    }
+
+    autoScrollIntervalRef.current = setInterval(() => {
+      if (isAutoScrolling) {
+        const currentIndex = services.findIndex(s => s.id === activeService);
+        const nextIndex = (currentIndex + 1) % services.length;
+        const nextServiceId = services[nextIndex].id;
+
+        setActiveService(nextServiceId);
+        scrollToService(nextServiceId);
+      }
+    }, 3000); // Change tab every 3 seconds
+  };
+
+  // Start auto-scroll on mount
+  useEffect(() => {
+    startAutoScroll();
+
+    return () => {
+      if (autoScrollIntervalRef.current) {
+        clearInterval(autoScrollIntervalRef.current);
+      }
+    };
+  }, []);
+
+  // Scroll to initial active service on mount
+  useEffect(() => {
+    setTimeout(() => {
+      scrollToService(activeService);
+    }, 500);
+  }, []);
+
   return (
     <section className="pt-0 pb-4 bg-white" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,29 +179,46 @@ const WhatWeOffer: React.FC = () => {
           style={{ backgroundColor: '#0b1220' }}
         >
           <div className="p-6 sm:p-8 lg:p-10">
-            {/* Service Icons */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 gap-y-6 sm:gap-y-4 md:gap-y-3 mb-6 sm:mb-8">
-              {services.map((service) => {
-                const Icon = service.icon;
-                return (
-                  <button
-                    key={service.id}
-                    onClick={() => setActiveService(service.id)}
-                    className={`
-                      flex flex-col items-center justify-center gap-2 text-center p-2 rounded-xl transition-all duration-300
-                      ${activeService === service.id
-                        ? 'bg-white/5 border border-white/30 scale-105 translate-y-6 text-white font-semibold'
-                        : 'text-white/40 border border-transparent hover:text-white hover:font-medium'
-                      }
-                    `}
-                  >
-                    <Icon className="w-8 h-8 text-white/80 transition-all duration-300" />
-                    <span className="text-xs font-medium leading-tight">
-                      {service.title}
-                    </span>
-                  </button>
-                );
-              })}
+            {/* Service Icons - Horizontal scroll on mobile */}
+            <div className="relative">
+              {/* Scroll container */}
+              <div
+                ref={scrollContainerRef}
+                className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+              >
+                <div className="flex flex-nowrap gap-3 gap-y-6 sm:gap-y-4 md:gap-y-3 mb-6 sm:mb-8 min-w-max md:min-w-0">
+                  {services.map((service) => {
+                    const Icon = service.icon;
+                    return (
+                      <button
+                        key={service.id}
+                        data-service-id={service.id}
+                        onClick={() => handleServiceClick(service.id)}
+                        className={`
+                          flex flex-col items-center justify-center gap-2 text-center p-2 rounded-xl transition-all duration-300 flex-shrink-0
+                          min-w-[80px] max-w-[100px] sm:min-w-0 sm:max-w-none sm:flex-1
+                          ${activeService === service.id
+                            ? 'text-white font-semibold scale-105'
+                            : 'text-white/40 hover:text-white hover:font-medium'
+                          }
+                        `}
+                      >
+                        <Icon className={`
+                          w-8 h-8 transition-all duration-300 flex-shrink-0
+                          ${activeService === service.id ? 'text-white' : 'text-white/80'}
+                        `} />
+                        <span className="text-xs font-medium leading-tight">
+                          {service.title}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Scroll indicators - optional */}
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#0b1220] to-transparent pointer-events-none md:hidden"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[#0b1220] to-transparent pointer-events-none md:hidden"></div>
             </div>
 
             {/* Content */}
@@ -161,6 +251,17 @@ const WhatWeOffer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Add this CSS to hide scrollbar */}
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 };

@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                 <div>
                   <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">EMAIL</p>
                   <a href="mailto:metaliftsolutions@gmail.com" className="mt-0.5 sm:mt-1 block text-sm sm:text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
-                    metaliftsolutions@gmail.com
+                    info@metaliftsolutions.com
                   </a>
                 </div>
               </div>

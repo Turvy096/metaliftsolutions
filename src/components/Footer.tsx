@@ -145,8 +145,16 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-center sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>&copy; {currentYear} Metalift Solutions. All rights reserved.</p>
+          <nav aria-label="Legal" className="flex items-center gap-5">
+            <a href="/privacy-policy.html" className="transition hover:text-white">
+              Privacy Policy
+            </a>
+            <Link to="/terms" className="transition hover:text-white">
+              Terms &amp; Conditions
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>

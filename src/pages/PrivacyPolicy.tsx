@@ -1,119 +1,108 @@
-const sections = [
-  {
-    title: '1. Information we collect',
-    items: [
-      'Contact details such as your name, email address, phone number, and company when you complete a form or contact us.',
-      'Project information you opt to share during discovery conversations.',
-      'Usage data from our website including device, browser, and interaction analytics captured through privacy-friendly tools.',
-    ],
-  },
-  {
-    title: '2. How we use your information',
-    items: [
-      'To respond to enquiries, schedule consultations, and deliver proposals.',
-      'To operate, maintain, and improve our website and services.',
-      'To send updates about Metalift Solutions that we believe may interest you (you can opt-out anytime).',
-    ],
-  },
-  {
-    title: '3. How we share data',
-    items: [
-      'We do not sell your personal information.',
-      'We may share information with trusted service providers who assist in operating our business (for example, analytics or email tools) under confidentiality agreements.',
-      'We may disclose information to comply with legal obligations or protect our rights.',
-    ],
-  },
-  {
-    title: '4. Data retention',
-    items: [
-      'We retain personal information only for as long as necessary to fulfil the purposes outlined in this policy.',
-      'You may request deletion of your data by contacting us at info@metaliftsolutions.co.ke.',
-    ],
-  },
-  {
-    title: '5. Your rights',
-    items: [
-      'Request access to the data we hold about you.',
-      'Request correction, deletion, or restriction of your personal data.',
-      'Object to certain processing or withdraw consent where processing is based on consent.',
-    ],
-  },
-];
+import Header from '../components/Header';
 
 const PrivacyPolicy = () => (
-  <div className="space-y-16 pb-16 sm:space-y-20 sm:pb-20">
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#fef4ee] transition-colors duration-300 dark:from-night dark:via-night/90 dark:to-slate/70" />
-      <div className="relative mx-auto flex max-w-4xl flex-col gap-6 px-4 pb-16 text-center sm:px-6 lg:px-8">
-        <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-[#ffd9c9] bg-white px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-[#e34813] shadow-sm transition-colors duration-300 dark:border-white/10 dark:bg-white/5 dark:text-brand-200">
-          Privacy policy
-        </span>
-        <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-          Your trust, protected.
-        </h1>
-        <p className="text-lg text-slate-700 transition-colors dark:text-slate-100">
-          We are committed to handling your information with transparency and respect. This policy outlines how Metalift Solutions collects, uses, and safeguards your data.
-        </p>
-        <p className="text-xs uppercase tracking-[0.3em] text-slate-500 transition-colors dark:text-slate-300">
-          Effective date: November 2025
-        </p>
-      </div>
-    </section>
+  <div className="min-h-screen bg-white text-slate-700">
+    <Header solid />
 
-    <section className="mx-auto max-w-5xl space-y-12 px-4 sm:px-6 lg:px-8">
-      {sections.map((section) => (
-        <article
-          key={section.title}
-          className="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5"
-        >
-          <h2 className="text-2xl font-semibold text-slate-900 transition-colors dark:text-white">
-            {section.title}
-          </h2>
-          <ul className="mt-4 space-y-3 text-sm text-slate-700 transition-colors dark:text-slate-100">
-            {section.items.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-[#e34813] transition-colors dark:bg-brand-400" />
-                <span>{item}</span>
-              </li>
-            ))}
+    <main className="mx-auto max-w-6xl px-4 pb-16 pt-32 sm:px-6 lg:px-8">
+      <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">Privacy Policy</h1>
+      <p className="mt-2 text-sm text-slate-500">Effective date: 9 August 2026</p>
+
+      <div className="mt-8 space-y-8 leading-7">
+        <p>
+          Metalift Solutions is committed to handling your information transparently and
+          responsibly. This policy explains what information we collect, how we use it, and the
+          choices available to you when you use our website, applications, and services.
+        </p>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">1. Information we collect</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-6">
+            <li>Contact details such as your name, email address, telephone number, and company.</li>
+            <li>Information you choose to provide while using our services or discussing a project.</li>
+            <li>Technical and usage information such as device type, browser, diagnostics, and service interactions.</li>
           </ul>
-        </article>
-      ))}
-      <article className="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
-        <h2 className="text-2xl font-semibold text-slate-900 transition-colors dark:text-white">6. Cookies & analytics</h2>
-        <p className="mt-4 text-sm text-slate-700 transition-colors dark:text-slate-100">
-          We use lightweight analytics to understand aggregate usage patterns and improve our services. You can adjust your browser settings to refuse cookies. The site will remain fully functional.
-        </p>
-      </article>
+        </section>
 
-      <article className="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
-        <h2 className="text-2xl font-semibold text-slate-900 transition-colors dark:text-white">7. International transfers</h2>
-        <p className="mt-4 text-sm text-slate-700 transition-colors dark:text-slate-100">
-          Metalift Solutions operates globally. When information is transferred outside your region, we ensure appropriate safeguards are in place to protect your data in accordance with applicable laws.
-        </p>
-      </article>
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">2. How we use your information</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-6">
+            <li>To provide, operate, maintain, secure, and improve our services.</li>
+            <li>To respond to enquiries, provide support, and deliver proposals.</li>
+            <li>To communicate important service updates.</li>
+            <li>To comply with legal obligations and protect our users and rights.</li>
+          </ul>
+        </section>
 
-      <article className="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
-        <h2 className="text-2xl font-semibold text-slate-900 transition-colors dark:text-white">8. Updates to this policy</h2>
-        <p className="mt-4 text-sm text-slate-700 transition-colors dark:text-slate-100">
-          We may update this policy periodically. When we do, we will revise the effective date above and post the updated version on this page.
-        </p>
-      </article>
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">3. Sharing of information</h2>
+          <p className="mt-3">
+            We do not sell your personal information. We may share necessary information with
+            trusted providers that help us operate our services, or where disclosure is required by law.
+          </p>
+        </section>
 
-      <article className="rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
-        <h2 className="text-2xl font-semibold text-slate-900 transition-colors dark:text-white">9. Contact us</h2>
-        <p className="mt-4 text-sm text-slate-700 transition-colors dark:text-slate-100">
-          If you have questions about this policy or how we handle your data, reach us at{' '}
-          <a
-            href="mailto:info@metaliftsolutions.co.ke"
-            className="text-[#e34813] underline decoration-brand-400/40 underline-offset-4 transition hover:text-[#bf390d] dark:text-brand-200 dark:hover:text-brand-100"
-          >
-            info@metaliftsolutions.co.ke
-          </a>
-          .
-        </p>
-      </article>
-    </section>
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">4. Data security and retention</h2>
+          <p className="mt-3">
+            We use reasonable safeguards to protect personal information and retain it only for as
+            long as necessary to provide our services and meet legal requirements.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">5. Your rights and choices</h2>
+          <p className="mt-3">
+            Depending on applicable law, you may request access to, correction of, deletion of, or
+            restriction of your personal information. You may also object to certain processing or
+            withdraw consent where processing relies on consent.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">6. Cookies and analytics</h2>
+          <p className="mt-3">
+            Our website may use cookies and limited analytics to understand aggregate usage and
+            improve our services. You can control cookies through your browser settings.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">7. Children's privacy</h2>
+          <p className="mt-3">
+            Our general services are not directed to children under 13, and we do not knowingly
+            collect their personal information.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">8. International transfers</h2>
+          <p className="mt-3">
+            Where information is processed outside your country, we use appropriate safeguards in
+            accordance with applicable data-protection law.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">9. Changes to this policy</h2>
+          <p className="mt-3">
+            We may update this policy periodically. Changes will be published on this page with a
+            revised effective date.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">10. Contact us</h2>
+          <p className="mt-3">
+            For privacy questions or requests, email{' '}
+            <a className="text-orange-600 underline" href="mailto:info@metaliftsolutions.co.ke">
+              info@metaliftsolutions.co.ke
+            </a>
+            .
+          </p>
+        </section>
+      </div>
+    </main>
   </div>
 );
 

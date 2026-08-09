@@ -10,7 +10,11 @@ const navLinks = [
   { label: 'CONTACT', href: '/contact' },
 ];
 
-const Header = () => {
+interface HeaderProps {
+  solid?: boolean;
+}
+
+const Header = ({ solid = false }: HeaderProps) => {
   const [open, setOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -81,12 +85,12 @@ const Header = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled
+        solid || isScrolled
           ? 'shadow-lg'
           : 'bg-transparent'
       }`}
       style={{
-        backgroundColor: isScrolled ? '#0b1220' : 'transparent'
+        backgroundColor: solid || isScrolled ? '#0b1220' : 'transparent'
       }}
     >
       <nav className="w-full flex items-center justify-between px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 text-white transition-colors">

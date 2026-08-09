@@ -7,7 +7,7 @@ const navLinks = [
   { label: 'ABOUT', href: '#about' },
   { label: 'SERVICES', href: '#services' },
   { label: 'PROJECTS', href: '#projects' },
-  { label: 'CONTACT', href: '#testimonials' },
+  { label: 'CONTACT', href: '/contact' },
 ];
 
 const Header = () => {
@@ -56,6 +56,11 @@ const Header = () => {
 
   const handleNavClick = (href: string) => {
     setOpen(false);
+
+    if (href.startsWith('/')) {
+      navigate(href);
+      return;
+    }
 
     if (location.pathname !== '/') {
       navigate('/');

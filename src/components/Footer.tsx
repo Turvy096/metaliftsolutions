@@ -149,9 +149,9 @@ const Footer = () => {
                 <p className="font-medium text-white">Project enquiries</p>
                 <a
                   className="hover:text-white"
-                  href="mailto:metaliftsolutions@gmail.com"
+                  href="mailto:info@metaliftsolutions.co.ke"
                 >
-                  info@metaliftsolutions.com
+                  info@metaliftsolutions.co.ke
                 </a>
               </div>
             </li>

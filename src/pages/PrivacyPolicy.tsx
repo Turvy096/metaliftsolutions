@@ -27,7 +27,7 @@ const sections = [
     title: '4. Data retention',
     items: [
       'We retain personal information only for as long as necessary to fulfil the purposes outlined in this policy.',
-      'You may request deletion of your data by contacting us at metaliftsolutions@gmail.com.',
+      'You may request deletion of your data by contacting us at info@metaliftsolutions.co.ke.',
     ],
   },
   {
@@ -105,10 +105,10 @@ const PrivacyPolicy = () => (
         <p className="mt-4 text-sm text-slate-700 transition-colors dark:text-slate-100">
           If you have questions about this policy or how we handle your data, reach us at{' '}
           <a
-            href="mailto:metaliftsolutions@gmail.com"
+            href="mailto:info@metaliftsolutions.co.ke"
             className="text-[#e34813] underline decoration-brand-400/40 underline-offset-4 transition hover:text-[#bf390d] dark:text-brand-200 dark:hover:text-brand-100"
           >
-            metaliftsolutions@gmail.com
+            info@metaliftsolutions.co.ke
           </a>
           .
         </p>

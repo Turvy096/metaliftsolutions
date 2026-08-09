@@ -1,33 +1,38 @@
 ﻿import React, { useState } from 'react';
 import Header from '../components/Header';
+import { sendContactEmail } from '../services/email';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    budget: '',
     message: '',
-    nda: false,
-    countryCode: '+254',
-    currency: 'KES',
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (status !== 'idle') setStatus('idle');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    setStatus('sending');
+    try {
+      await sendContactEmail(formData);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setStatus('success');
+    } catch (error) {
+      console.error(
+        'Unable to send contact email:',
+        error instanceof Error ? error.message : error,
+      );
+      setStatus('error');
+    }
   };
 
   return (
@@ -97,8 +102,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500">EMAIL</p>
-                  <a href="mailto:metaliftsolutions@gmail.com" className="mt-0.5 sm:mt-1 block text-sm sm:text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
-                    info@metaliftsolutions.com
+                  <a href="mailto:info@metaliftsolutions.co.ke" className="mt-0.5 sm:mt-1 block text-sm sm:text-base font-medium text-slate-900 hover:text-[#0d1a30] dark:text-white">
+                    info@metaliftsolutions.co.ke
                   </a>
                 </div>
               </div>
@@ -155,9 +160,26 @@ const Contact: React.FC = () => {
             <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">Share your idea with us, and we'll help you build it faster, and more efficiently. Please indicate your Full Name, Email and Quotation and any need for your request and indicate whether or not you want to protect your business idea by signing an NDA.</p>
 
             <form onSubmit={handleSubmit} className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-slate-700">Full name <span className="text-red-500">*</span></label>
+                  <input id="contact-name" name="name" type="text" autoComplete="name" required placeholder="Your full name" value={formData.name} onChange={handleChange} className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#0d1a30] focus:outline-none focus:ring-0" />
+                </div>
+                <div>
+                  <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-slate-700">Phone number <span className="text-red-500">*</span></label>
+                  <input id="contact-phone" name="phone" type="tel" autoComplete="tel" required placeholder="Your phone number" value={formData.phone} onChange={handleChange} className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#0d1a30] focus:outline-none focus:ring-0" />
+                </div>
+              </div>
+
               <div>
-                <label className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">How can we help you? <span className="text-red-500">*</span></label>
+                <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-slate-700">Email address <span className="text-red-500">*</span></label>
+                <input id="contact-email" name="email" type="email" autoComplete="email" required placeholder="you@example.com" value={formData.email} onChange={handleChange} className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-[#0d1a30] focus:outline-none focus:ring-0" />
+              </div>
+
+              <div>
+                <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-slate-200">How can we help you? <span className="text-red-500">*</span></label>
                 <textarea
+                  id="contact-message"
                   name="message"
                   required
                   rows={3}
@@ -176,11 +198,16 @@ const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#0d1a30]/40"
+                disabled={status === 'sending'}
+                className="w-full rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#0d1a30]/40 disabled:cursor-not-allowed disabled:opacity-60"
                 style={{ backgroundColor: '#0d1a30' }}
               >
-                Send Message
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
               </button>
+              <div aria-live="polite" className="min-h-5 text-sm">
+                {status === 'success' && <p className="text-green-700">Thank you. Your message has been sent successfully.</p>}
+                {status === 'error' && <p className="text-red-600">We couldn't send your message. Please try again or email info@metaliftsolutions.co.ke.</p>}
+              </div>
             </form>
           </div>
         </div>

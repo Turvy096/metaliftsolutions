@@ -10,7 +10,7 @@ import WhatWeOffer from '../components/home/WhatWeOffer';
 import ServicesSection from '../components/home/ServicesSection';
 import TechnologyStackSection from '../components/home/TechnologyStackSection';
 import ContactSection from '../components/home/ContactSection';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import Reveal from '../components/shared/Reveal';
 
 interface Project {
   title: string;
@@ -22,14 +22,6 @@ interface Project {
 }
 
 const Home = () => {
-  // Scroll animation refs
-  const whatWeOfferRef = useScrollAnimation();
-  const servicesSectionRef = useScrollAnimation();
-  const projectsRef = useScrollAnimation();
-  const faqRef = useScrollAnimation();
-  const techStackRef = useScrollAnimation();
-  const contactRef = useScrollAnimation();
-
   // Modal state
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,71 +45,37 @@ const Home = () => {
         </div>
 
         {/* What We Offer Section */}
-        <div
-          id="services"
-          ref={whatWeOfferRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out ${
-            whatWeOfferRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal id="services" className="scroll-mt-28">
           <WhatWeOffer />
-        </div>
+        </Reveal>
 
         {/* Services Section - Industries section */}
-        <div
-          id="about"
-          ref={servicesSectionRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out delay-100 ${
-            servicesSectionRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal id="about" className="scroll-mt-28" delay={0.05}>
           <ServicesSection />
-        </div>
+        </Reveal>
 
         {/* Technology Stack Section */}
-        <div
-          ref={techStackRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out delay-200 ${
-            techStackRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal className="scroll-mt-28">
           <TechnologyStackSection />
-        </div>
+        </Reveal>
 
         {/* Projects Section */}
-        <div
-          id="projects"
-          ref={projectsRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out delay-300 ${
-            projectsRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal id="projects" className="scroll-mt-28">
           <ProjectsSection
             projects={projects}
             onProjectClick={handleProjectClick}
           />
-        </div>
+        </Reveal>
 
         {/* FAQ Section */}
-        <div
-          ref={faqRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out delay-400 ${
-            faqRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal className="scroll-mt-28">
           <FAQSection />
-        </div>
+        </Reveal>
 
         {/* Contact Section */}
-        <div
-          id="contact"
-          ref={contactRef.ref}
-          className={`scroll-mt-28 transition-all duration-1000 ease-out delay-500 ${
-            contactRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'
-          }`}
-        >
+        <Reveal id="contact" className="scroll-mt-28">
           <ContactSection />
-        </div>
+        </Reveal>
       </div>
 
       {/* SIMPLE MODAL - Directly in the component */}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -62,18 +63,39 @@ const Hero: React.FC = () => {
       />
 
       <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center min-h-[50vh] md:min-h-[55vh] lg:min-h-[calc(100vh+80px)] gap-6 sm:gap-14 px-4 pb-8 sm:pb-20 pt-24 sm:pt-32 text-center sm:px-6 lg:px-8">
-        <div className="max-w-4xl space-y-3 sm:space-y-8">
-          <h1 className="text-3xl sm:text-[2.25rem] md:text-[2.75rem] lg:text-6xl font-bold tracking-tight text-white leading-[1.2] sm:leading-[1.3] lg:leading-[1.4] animate-slideUp">
+        <motion.div
+          className="max-w-4xl space-y-3 sm:space-y-8"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.18, delayChildren: 0.12 } },
+          }}
+        >
+          <motion.h1
+            className="text-3xl sm:text-[2.25rem] md:text-[2.75rem] lg:text-6xl font-bold tracking-tight text-white leading-[1.2] sm:leading-[1.3] lg:leading-[1.4]"
+            variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
             Digital products engineered for
             measurable performance.
-          </h1>
-          <p className="text-[15px] sm:text-[1.125rem] md:text-[1.25rem] lg:text-xl leading-relaxed text-white/80 animate-slideUp animation-delay-200 max-w-3xl mx-auto px-2 sm:px-0">
+          </motion.h1>
+          <motion.p
+            className="text-[15px] sm:text-[1.125rem] md:text-[1.25rem] lg:text-xl leading-relaxed text-white/80 max-w-3xl mx-auto px-2 sm:px-0"
+            variants={{ hidden: { opacity: 0, y: 42 }, visible: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
             Metalift Solutions blends strategy, UX, and engineering into end-to-end experiences for
             ambitious teams across Africa and beyond. Every engagement is grounded in outcomes, scale,
             and operational clarity.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 stagger-children">
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
+          initial={{ opacity: 0, y: 36 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.65, ease: 'easeOut' }}
+        >
           <button
             onClick={handleStartProject}
             className="inline-flex items-center justify-center rounded-xl px-6 sm:px-10 py-3 sm:py-5 text-sm sm:text-lg font-semibold uppercase transition hover:scale-105 min-w-[160px] sm:min-w-[200px] tracking-wide bg-orange-500 text-white hover:bg-orange-600 w-auto"
@@ -86,7 +108,7 @@ const Hero: React.FC = () => {
           >
             See our process
           </button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

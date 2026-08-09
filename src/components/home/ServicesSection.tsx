@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'motion/react';
 import {
   ShoppingCartIcon,
   Cog6ToothIcon,
@@ -94,14 +95,25 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
         </div>
 
         {/* Industry cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-0.5">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-0.5"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.08 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+        >
           {industries.map((industry, index) => {
             const Icon = industry.icon;
 
             return (
-              <div
+              <motion.div
                 key={industry.title}
                 className="group relative overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-300 bg-white border border-slate-200 min-h-[280px] sm:min-h-[320px]"
+                variants={{
+                  hidden: { opacity: 0, y: 64, scale: 0.96 },
+                  visible: { opacity: 1, y: 0, scale: 1 },
+                }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               >
                 {/* Default content */}
                 <div className="relative z-10 flex flex-col items-center text-center px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10 transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
@@ -155,10 +167,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

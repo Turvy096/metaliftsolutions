@@ -2,6 +2,7 @@ import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import ScrollToTop from './ScrollToTop';
+import Seo from './Seo';
 
 const Layout = () => {
   const location = useLocation();
@@ -9,6 +10,7 @@ const Layout = () => {
   return (
     <MotionConfig reducedMotion="user">
       <div className="relative min-h-screen bg-white">
+        <Seo />
         <ScrollToTop />
         <div className="relative flex flex-col min-h-screen">
           <AnimatePresence mode="wait" initial={false}>

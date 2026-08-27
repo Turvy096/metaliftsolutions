@@ -28,11 +28,11 @@ const Hero: React.FC = () => {
 
   const handleSeeProcess = () => {
     if (location.pathname === '/') {
-      scrollToTarget('#testimonials');
+      scrollToTarget('#contact');
     } else {
       navigate('/');
       setTimeout(() => {
-        scrollToTarget('#testimonials');
+        scrollToTarget('#contact');
       }, 500);
     }
   };

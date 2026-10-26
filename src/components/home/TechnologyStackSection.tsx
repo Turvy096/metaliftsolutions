@@ -42,7 +42,7 @@ const techCategories: TechCategory[] = [
     ],
   },
   {
-    name: 'Data Base',
+    name: 'Databases',
     items: [
       { name: 'MYSQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
       { name: 'POSTGRESQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
@@ -76,10 +76,10 @@ const TechnologyStackSection: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-6xl mx-auto mb-6 sm:mb-9">
           <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3">
-            The Tech Stack We Use to Build Profitable Solutions
+            Technologies We Work With
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-4xl mx-auto text-center px-2">
-            We leverage modern technologies to build fast, secure, and reliable digital solutions tailored to your business.
+            We choose tools based on your project, budget, and maintenance needs.
           </p>
         </div>
 

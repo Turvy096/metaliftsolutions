@@ -70,9 +70,8 @@ const Footer = () => {
             </span>
           </Link>
           <p className="max-w-md text-sm text-white/70">
-            Product strategy, UX craftsmanship, and engineering excellence delivered with clear
-            communication and reliable execution. We build experiences that are resilient, scalable,
-            and thoughtful.
+            We build websites, mobile apps, and custom software for businesses. From planning
+            and design to development and support, we help you get your project up and running.
           </p>
           <div className="flex items-center gap-4">
             <a
@@ -137,7 +136,7 @@ const Footer = () => {
               <MapPinIcon className="h-5 w-5 flex-shrink-0 text-white/50" />
               <div>
                 <p className="font-medium text-white">Based in</p>
-                <p className="text-white/70">Nairobi, Kenya - Global Delivery</p>
+                <p className="text-white/70">Nairobi, Kenya</p>
               </div>
             </li>
           </ul>

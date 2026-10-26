@@ -13,25 +13,25 @@ type SeoConfig = {
 
 const seoByPath: Record<string, SeoConfig> = {
   '/': {
-    title: 'Metalift Solutions | Digital Product Studio in Nairobi',
+    title: 'Metalift Solutions | Websites, Apps & Software in Nairobi',
     description:
-      'Metalift Solutions is a Nairobi digital product studio building scalable web and mobile applications through product strategy, UX design, and engineering.',
+      'Metalift Solutions builds websites, mobile apps, and custom software for businesses in Nairobi, Kenya. We help with planning, design, development, and support.',
     canonicalPath: '/',
   },
   '/about': {
-    title: 'About Metalift Solutions | Nairobi Digital Product Studio',
+    title: 'About Metalift Solutions | Software Development in Nairobi',
     description:
-      'Meet the Nairobi-based strategy, design, and engineering team behind Metalift Solutions and our approach to building dependable digital products.',
+      'Learn about Metalift Solutions in Nairobi and how we plan, design, build, and support websites, apps, and business software.',
     canonicalPath: '/about',
   },
   '/services': {
-    title: 'Product Strategy, UX Design & Software Development | Metalift',
+    title: 'Web, App & Software Development Services | Metalift',
     description:
-      'Explore Metalift Solutions services for product strategy, UX/UI design, web and mobile development, QA, DevOps, and embedded product delivery.',
+      'Explore our website, mobile app, and custom software development services, including design, integrations, hosting, and maintenance.',
     canonicalPath: '/services',
   },
   '/projects': {
-    title: 'Digital Product Projects & Case Studies | Metalift Solutions',
+    title: 'Web & App Projects | Metalift Solutions',
     description:
       'See how Metalift Solutions designs and engineers web, mobile, commerce, gaming, and healthcare products for growing businesses.',
     canonicalPath: '/projects',

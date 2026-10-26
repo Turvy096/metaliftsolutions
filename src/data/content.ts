@@ -113,8 +113,8 @@ export const projects = [
 {
 title: 'ReTrade Commerce',
 description:
-'A multi market B2B commerce platform powering circular distribution for FMCGs across East Africa. Delivered unified web, Android, and operations dashboards.',
-stats: ['+64% order volume', '99.98% uptime'],
+'A business-to-business commerce platform for ordering and distribution in East Africa, with web, Android, and operations tools.',
+stats: [],
 image: '/images/apps/retradelogo.png',
 link: 'https://retrade.co.ke/', // ✅ Opens in new tab
 isUnderDevelopment: false
@@ -122,16 +122,16 @@ isUnderDevelopment: false
 {
 title: 'GameBaze Studios',
 description:
-'Cross platform gaming companion application with live tournaments, loyalty rewards, and social experiences.',
-stats: ['4.8 ★ mobile rating', '150k active players'],
+'A gaming companion app in development, with tournament, rewards, and community features.',
+stats: [],
 image: '/images/apps/gaming-mockup.jpg',
 isUnderDevelopment: true // ❌ Shows development popup
 },
 {
 title: 'Sasa Health',
 description:
-'Telehealth ecosystem with patient triage flows, clinician dashboards, and EHR integrations built for expansion across the continent.',
-stats: ['3x consult volume', 'ISO27001 ready'],
+'A healthcare platform in development for appointment workflows, clinician dashboards, and patient care.',
+stats: [],
 image: '/images/apps/webapp.jpeg',
 isUnderDevelopment: true // ❌ Shows development popup
 },

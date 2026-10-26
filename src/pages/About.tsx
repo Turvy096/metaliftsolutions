@@ -1,39 +1,24 @@
 const milestones = [
-  {
-    year: '2019',
-    title: 'Metalift Solutions is founded',
-    description:
-      'We set out to build digital experiences that merge Kenyan ingenuity with global product standards.',
-  },
-  {
-    year: '2021',
-    title: 'Cross-functional studio',
-    description:
-      'Expanded into a full-stack squad across strategy, UX, engineering, and QA to own outcomes end-to-end.',
-  },
-  {
-    year: '2023',
-    title: 'Global partnerships',
-    description:
-      'Trusted by scale-ups across Africa, Europe, and the Middle East to launch new verticals and platforms.',
-  },
+  { year: 'Plan', title: 'Understand the project', description: 'Discuss the problem, users, budget, and features. Agree on the scope before development starts.' },
+  { year: 'Build', title: 'Design, develop, and test', description: 'Review the design, build the agreed features, and test how they work together.' },
+  { year: 'Launch', title: 'Release and support', description: 'Prepare the release, hand over the work, and agree on any ongoing maintenance.' },
 ];
 
 const pillars = [
   {
-    title: 'Strategy with empathy',
+    title: 'Understand the Need',
     description:
-      'We start with people, not features--grounding every engagement in real user needs and business priorities.',
+      'We ask how your business works and who will use the software before deciding what to build.',
   },
   {
-    title: 'Craft is non-negotiable',
+    title: 'Build With Care',
     description:
-      'Polish is baked in from the start. It shapes how we structure components, write code, and test flows.',
+      'We pay attention to how the software looks, works, and will be maintained after launch.',
   },
   {
-    title: 'Momentum after launch',
+    title: 'Plan for Support',
     description:
-      'Your roadmap does not stop at release. We embed long-term thinking, analytics, and iteration into the engagement.',
+      'We discuss hosting, maintenance, and future updates so you know what happens after release.',
   },
 ];
 
@@ -46,11 +31,11 @@ const About = () => (
           About Metalift
         </span>
         <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-          We are builders, designers, and optimists crafting dependable digital products.
+          Web and Software Development in Nairobi
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          Based in Nairobi, delivering globally. Our studio pairs relentless curiosity with a bias
-          for action, partnering closely with teams who are ready to create category-defining experiences.
+          Metalift Solutions builds websites, mobile apps, and custom software for businesses.
+          We help with planning, design, development, and support.
         </p>
       </div>
     </section>
@@ -59,53 +44,23 @@ const About = () => (
       <div className="grid gap-10 lg:grid-cols-[1fr,1fr] lg:items-start">
         <div className="space-y-6">
           <h2 className="text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-            Craft, clarity, and collaboration.
+            How We Work With You
           </h2>
           <p className="text-slate-700 transition-colors dark:text-slate-100">
-            We began as a tight crew building products for growth-stage companies. As our partners grew,
-            so did the bar for outcomes. Today, we operate as an embedded product team--lean, multi-disciplinary,
-            and obsessed with results.
+            We start by understanding what you need and the constraints of your project. Then we agree
+            on the features, costs, responsibilities, and schedule.
           </p>
           <p className="text-slate-700 transition-colors dark:text-slate-100">
-            Collaboration is foundational. We co-create with founders, CTOs, and product leaders who value
-            informed debate, rapid experimentation, and thoughtful delivery.
+            During development, we share progress and ask for your feedback. If requirements change,
+            we discuss the effect on cost and timing before proceeding.
           </p>
         </div>
         <div className="grid gap-6 rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[#e34813]">
-              Studio pulse
-            </p>
-            <div className="mt-4 grid gap-6 sm:grid-cols-3">
-              <div>
-                <p className="text-3xl font-semibold text-[#e34813] dark:text-brand-200">12+</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-300">
-                  Core specialists
-                </p>
-              </div>
-              <div>
-                <p className="text-3xl font-semibold text-[#e34813] dark:text-brand-200">7</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-300">
-                  Countries launched
-                </p>
-              </div>
-              <div>
-                <p className="text-3xl font-semibold text-[#e34813] dark:text-brand-200">4.9</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-300">
-                  Partner satisfaction
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-brand-100 bg-brand-50/90 p-6 transition-colors duration-300 shadow-brand-50/40 dark:border-white/10 dark:bg-night/60">
-            <p className="text-sm text-slate-700 transition-colors dark:text-slate-100">
-              "We treat every engagement as a shared venture. Your success metrics become ours, and we show up
-              accordingly--with accountability, curiosity, and craft."
-            </p>
-            <p className="mt-4 text-sm font-semibold text-[#e34813] transition-colors dark:text-brand-100">
-              Metalift Studio Leads
-            </p>
-          </div>
+          <h3 className="text-xl font-semibold text-slate-900 dark:text-white">A Clear Project Scope</h3>
+          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-100">
+            Your proposal sets out the work included, deliverables, costs, and payment stages.
+            We also discuss what you need to provide and any support required after launch.
+          </p>
         </div>
       </div>
     </section>
@@ -114,7 +69,7 @@ const About = () => (
       <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#fff5ef] via-white to-[#ffe3d2] transition-colors duration-300 dark:from-brand-500/10 dark:via-transparent dark:to-brand-300/10" />
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-          The principles we operate by
+          What You Can Expect
         </h2>
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {pillars.map((pillar) => (
@@ -138,11 +93,10 @@ const About = () => (
       <div className="grid gap-10 lg:grid-cols-[0.9fr,1.1fr] lg:items-center">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-            Our story so far.
+            From Planning to Launch
           </h2>
           <p className="text-slate-700 transition-colors dark:text-slate-100">
-            Each milestone represents a new chapter in how we partner with ambitious teams--and how we evolve
-            our craft to meet their goals.
+            Each project has different requirements. These are the main stages we work through with you.
           </p>
         </div>
         <ol className="relative space-y-8 border-l border-brand-100 pl-6 transition-colors duration-300 dark:border-white/10">
@@ -168,17 +122,16 @@ const About = () => (
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#ffe7da] via-white to-[#ffe3d2] blur-3xl transition-colors duration-300 dark:from-brand-500/20 dark:via-brand-400/10 dark:to-transparent" />
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 rounded-[2.5rem] border border-brand-50 bg-white px-6 py-12 text-center shadow-[0_32px_120px_-60px_rgba(227,72,19,0.45)] transition-colors duration-300 dark:border-white/10 dark:bg-white/10 dark:text-white dark:backdrop-blur lg:px-16">
         <h2 className="text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-          Let&apos;s build what&apos;s next together.
+          Have a Project in Mind?
         </h2>
         <p className="max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          Tell us about the product you have in mind--we will share insights, challenge ideas, and outline a
-          roadmap built around your goals.
+          Tell us what you need to build or improve. We can discuss the requirements and next steps.
         </p>
         <a
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 via-brand-400 to-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/30 transition hover:shadow-xl"
         >
-          Schedule a consultation
+          Discuss your project
         </a>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'motion/react';
+import { motion } from 'motion/react';
+import AnimatedHeading from '../shared/AnimatedHeading';
 import {
   ShoppingCartIcon,
   Cog6ToothIcon,
@@ -107,22 +108,15 @@ const IndustryCard = ({ industry }: IndustryCardProps) => (
 const ServicesSection: React.FC<ServicesSectionProps> = ({
   industries = defaultIndustries,
 }) => {
-  const reduceMotion = useReducedMotion();
 
   return (
     <section className="overflow-hidden pt-2 pb-8 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-full mx-auto mb-8 sm:mb-10">
-          <motion.h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-3"
-            initial={{ opacity: reduceMotion ? 1 : 0, x: reduceMotion ? 0 : -160 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.8, margin: '0px 0px -60px 0px' }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <AnimatedHeading className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-2 sm:mb-3">
             Industries We Serve.
-          </motion.h2>
+          </AnimatedHeading>
           <p className="text-sm sm:text-base lg:text-lg text-slate-600 leading-relaxed max-w-full px-2">
            We build software for businesses in retail, finance, healthcare, travel, education, and logistics. Here are some of the ways it can be used.
           </p>

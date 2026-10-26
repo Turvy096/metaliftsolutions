@@ -7,29 +7,29 @@ interface FAQ {
 
 const faqs: FAQ[] = [
   {
-    question: 'What services does your mobile app development company offer?',
+    question: 'What can you build?',
     answer:
-      'We offer end-to-end mobile app development including iOS, Android, cross-platform (Flutter & React Native), UI/UX design, backend development, API integration, and ongoing maintenance & support.',
+      'We build websites, iOS and Android apps, and custom software. We also help with interface design, API integrations, hosting, and maintenance.',
   },
   {
     question: 'How much does mobile app development cost?',
     answer:
-      'The cost depends on the complexity, features, and platforms.  We provide a detailed custom quote after understanding your requirements.',
+      'The cost depends on the features, platforms, and work involved. Once we understand your requirements, we can prepare a quote with the scope and costs.',
   },
   {
     question: 'How long does it take to build a mobile app?',
     answer:
-      'A basic MVP typically takes 4–8 weeks. Mid-level apps take around 2–4 months, and complex enterprise solutions can take 4–6 months or more. We follow an agile process so you can see progress early.',
+      'The timeline depends on the features, integrations, and testing needed. We discuss a schedule after reviewing your requirements and share progress as we build.',
   },
   {
     question: 'Do you sign an NDA to protect my app idea?',
     answer:
-      'Yes, absolutely. We take intellectual property seriously. We are happy to sign a Non-Disclosure Agreement (NDA) before discussing any project details to ensure your idea remains fully protected.',
+      'You can request a non-disclosure agreement (NDA) before sharing confidential details. We can discuss the agreement before starting the project.',
   },
   {
     question: 'Will you help publish the app on the App Store and Google Play?',
     answer:
-      'Yes. We handle the complete submission process for both Apple App Store and Google Play Store, including developer account setup, store listing, screenshots, and compliance with platform guidelines.',
+      'We can help prepare store listings, screenshots, and submissions for the App Store and Google Play. Each store reviews and approves apps independently.',
   },
 ];
 
@@ -54,10 +54,10 @@ const FAQSection: React.FC = () => {
         {/* Title */}
         <div className="mb-8 sm:mb-12 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
-            Frequently Asked Questions
+            Common Questions
           </h2>
           <p className="text-gray-400 mt-3 sm:mt-4 max-w-4xl mx-auto text-sm sm:text-base lg:text-lg px-2">
-            Find answers to common questions about our mobile app development services.
+            Answers to questions about planning, costs, development, and launch.
           </p>
         </div>
 
@@ -126,7 +126,7 @@ const FAQSection: React.FC = () => {
             onClick={handleToggle}
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-medium text-black shadow-md transition hover:bg-gray-100 hover:scale-105"
           >
-            {isAllVisible ? 'Read Less' : 'Read More'}
+            {isAllVisible ? 'Show fewer questions' : 'Show all questions'}
             <svg
               className={`h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 transition-transform duration-300 ${
                 isAllVisible ? 'rotate-180' : ''

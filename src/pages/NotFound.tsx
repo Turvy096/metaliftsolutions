@@ -6,10 +6,10 @@ const NotFound = () => (
       404 - Page not found
     </span>
     <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-      Looks like that page melted into the ether.
+      We Could Not Find This Page
     </h1>
     <p className="max-w-xl text-slate-700 transition-colors dark:text-slate-100">
-      The link you followed may be broken or the page may have moved. Let&apos;s get you back to the good stuff.
+      The link may be incorrect, or the page may have moved. You can return to the homepage to find what you need.
     </p>
     <Link
       to="/"

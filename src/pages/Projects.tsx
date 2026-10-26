@@ -1,48 +1,24 @@
 const caseStudies = [
   {
-    title: 'ReTrade Commerce',
-    industry: 'Supply chain & FMCG',
-    summary:
-      'Digitised a full marketplace and logistics platform for circular trade routes across East Africa.',
-    problem:
-      'Manual ordering and reconciliation caused stockouts, limited visibility, and stalled expansion.',
-    approach: [
-      'Mapped distributor journeys and warehousing operations to identify friction points.',
-      'Designed a modular design system and multilingual workflows for agents, admins, and retailers.',
-      'Built web, Android, and analytics layers with real-time inventory sync and offline resilience.',
-    ],
-    outcome: ['64% uplift in monthly orders', 'Paperless reconciliation across three countries'],
-    image: '/images/apps/retrade.jpg',
+    title: 'ReTrade Commerce', industry: 'Retail & distribution',
+    summary: 'A business-to-business commerce platform for ordering and distribution in East Africa.',
+    problem: 'Bringing product ordering and distribution tasks into one platform.',
+    approach: ['Product ordering workflows.', 'Web and Android interfaces.', 'Tools for managing operations.'],
+    outcome: ['Commerce platform', 'Web and Android applications'], image: '/images/apps/retrade.jpg',
   },
   {
-    title: 'GameBaze Studios',
-    industry: 'Gaming & entertainment',
-    summary:
-      'Shipped a cross-platform companion app powering tournaments, player rewards, and social features.',
-    problem:
-      'Disparate community tools made it hard to host live events, reward engagement, and track retention.',
-    approach: [
-      'Co-created a player progression model tied to loyalty and monetisation experiments.',
-      'Designed motion-rich interfaces with realtime match data and social presence.',
-      'Implemented React Native app, headless CMS, and Node services with Socket-powered live states.',
-    ],
-    outcome: ['150k monthly active players', '4.8 star rating across app stores'],
-    image: '/images/apps/gaming-mockup.jpg',
+    title: 'GameBaze Studios', industry: 'Gaming & entertainment',
+    summary: 'A gaming companion app in development, with tournament, rewards, and community features.',
+    problem: 'Bringing gaming events and community features into one app.',
+    approach: ['Tournament features.', 'Player rewards.', 'Community interactions.'],
+    outcome: ['In development', 'Not yet available to try'], image: '/images/apps/gaming-mockup.jpg',
   },
   {
-    title: 'Sasa Health',
-    industry: 'Healthtech',
-    summary:
-      'Built telehealth experiences for patients, clinicians, and operations with compliance baked in.',
-    problem:
-      'Fragmented tooling created bottlenecks for triage, scheduling, and follow-up care across clinics.',
-    approach: [
-      'Conducted in-clinic research to understand patient onboarding and clinician workflows.',
-      'Designed responsive interfaces for desktop and mobile with accessibility standards.',
-      'Delivered secure APIs, integrated payment gateways, and analytics dashboards for leadership.',
-    ],
-    outcome: ['3x consult volume in six months', 'Built for ISO27001 controls from day one'],
-    image: '/images/apps/webapp.jpeg',
+    title: 'Sasa Health', industry: 'Healthcare',
+    summary: 'A healthcare platform in development for patients, clinicians, and administrative teams.',
+    problem: 'Organising appointment and consultation workflows.',
+    approach: ['Patient appointment workflows.', 'Clinician dashboards.', 'Tools for administrative teams.'],
+    outcome: ['In development', 'Not yet available to try'], image: '/images/apps/webapp.jpeg',
   },
 ];
 
@@ -53,11 +29,10 @@ const Projects = () => (
       <div className="relative mx-auto flex max-w-5xl flex-col gap-8 px-4 pb-16 text-center sm:px-6 lg:px-8">
 
         <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-          Products crafted with partners who expect dependable, high-performance delivery.
+          Our Projects
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          Each engagement is an embedded partnership. Explore how we tailor team shape, delivery, and craft
-          to unlock tangible business results.
+          See what each project is for and the features it includes. Some projects are still in development.
         </p>
       </div>
     </section>
@@ -90,7 +65,7 @@ const Projects = () => (
               </div>
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#e34813] transition-colors dark:text-brand-200">
-                  Outcomes
+                  Features and status
                 </h3>
                 <ul className="mt-3 space-y-2 text-sm text-slate-700 transition-colors dark:text-slate-100">
                   {project.outcome.map((result) => (
@@ -106,7 +81,7 @@ const Projects = () => (
             </div>
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-[0.3em] text-[#e34813] transition-colors dark:text-brand-200">
-                How we tackled it
+                Project features
               </h3>
               <ul className="mt-3 space-y-3 text-sm text-slate-700 transition-colors dark:text-slate-100">
                 {project.approach.map((step) => (
@@ -121,7 +96,7 @@ const Projects = () => (
               href="/contact"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 underline decoration-brand-400/40 underline-offset-4 transition hover:text-brand-600 dark:text-brand-200 dark:hover:text-brand-100"
             >
-              Request the full case study
+              Ask about this project
             </a>
           </div>
           <div className="relative overflow-hidden rounded-3xl">

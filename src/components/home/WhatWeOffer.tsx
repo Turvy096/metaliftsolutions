@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { CheckIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import {
   DevicePhoneMobileIcon,
@@ -23,6 +24,7 @@ interface Service {
 }
 
 const WhatWeOffer: React.FC = () => {
+  const reduceMotion = useReducedMotion();
   const [activeService, setActiveService] = useState<string>('mobile');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -33,56 +35,56 @@ const WhatWeOffer: React.FC = () => {
     {
       id: 'mobile',
       title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications for iOS and Android. Engaging, performant, and user-friendly apps that delight users.',
-      details: 'We develop mobile apps for startups and enterprises. Our team builds apps that solve real business problems, from e-commerce and fintech to logistics and healthcare. We handle the entire process from concept to App Store and Google Play deployment.',
+      description: 'We build mobile apps for iOS and Android, with features designed around your customers and daily operations.',
+      details: 'We work with you on the screens, features, and data your app needs. We can also help prepare it for submission to the App Store and Google Play.',
       image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: DevicePhoneMobileIcon
     },
     {
       id: 'web',
       title: 'Web Development',
-      description: 'Full-stack web development with modern frameworks. Responsive, fast, and SEO optimized websites and web applications.',
-      details: 'We build websites and web applications for businesses that need an online presence that converts. From corporate websites to complex dashboards and admin panels, we focus on performance, security, and user experience. Our team uses React, Next.js, and Node.js to deliver modern web solutions.',
+      description: 'We build websites and web applications that work across phones, tablets, and computers.',
+      details: 'Projects can include company websites, online shops, dashboards, and customer portals. We discuss content, navigation, and integrations before development starts.',
       image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: GlobeAltIcon
     },
     {
       id: 'custom-software',
       title: 'Custom Software Development',
-      description: 'Custom software solutions tailored to your business needs. We build scalable, secure, and high performance applications that drive business growth.',
-      details: 'We build custom software for businesses that need solutions off the shelf products can\'t provide. Whether it\'s an inventory system, a CRM, or an internal operations tool, we create software that streamlines your workflow and helps your team work more efficiently.',
+      description: 'We build software for tasks that standard tools do not cover, such as managing inventory, customers, or internal workflows.',
+      details: 'We map out the steps your team follows and build tools around them. We also discuss how the software will connect to your existing systems.',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: ComputerDesktopIcon
     },
     {
       id: 'api',
       title: 'API Development',
-      description: 'Robust and scalable API solutions that connect your applications, services, and data. Secure, well documented, and high performance APIs.',
-      details: 'We design and build APIs that connect your applications, third party services, and data sources. Our APIs are built for reliability and scale, with proper authentication, rate limiting, and clear documentation. We help you build integrations that work.',
+      description: 'We build APIs to connect your software with payment services, business tools, and other data sources.',
+      details: 'We plan how data moves between systems, who can access it, and what happens when a request fails. Documentation helps your team use and maintain the integration.',
       image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: ShareIcon
     },
     {
       id: 'saas',
       title: 'SaaS Development',
-      description: 'Custom SaaS software development for your business needs. Scalable, multi tenant solutions with subscription management and enterprise grade security.',
-      details: 'We build SaaS platforms for businesses that want to offer software as a service. We handle the technical complexity - multi tenant architecture, user authentication, subscription billing, and payment processing so you can focus on your product and customers.',
+      description: 'We build subscription-based software with user accounts, billing, and the features your customers need.',
+      details: 'We help plan how different customers access the platform, manage their accounts, and pay for subscriptions. The initial features and future updates are agreed as part of the project.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: CloudIcon
     },
     {
       id: 'cross-platform',
       title: 'Cross-Platform App Development',
-      description: 'Build once, deploy everywhere. Cross platform applications for iOS, Android, and web using React Native and modern frameworks.',
-      details: 'We build cross platform apps using React Native and Flutter. This means you get iOS, Android, and sometimes web from a single codebase saving you time, money, and maintenance effort. Perfect for startups and businesses with limited development resources.',
+      description: 'We build apps that share code across iOS and Android, helping reduce development and maintenance work.',
+      details: 'A shared codebase can suit projects that need similar features on both platforms. We discuss any features that require separate platform-specific development.',
       image: 'https://images.unsplash.com/photo-1526498460520-4c246339dccb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: CommandLineIcon
     },
     {
       id: 'web-hosting',
       title: 'Web Hosting & Administration',
-      description: 'Reliable and secure web hosting solutions with 99.9% uptime guarantee. Professional web administration services including maintenance, security updates, and performance optimization.',
-      details: 'We provide managed hosting for websites and web applications. We handle server setup, security monitoring, backups, and performance optimization. We also manage domain registration, DNS, and email hosting. Our team ensures your site is always up and running smoothly.',
+      description: 'We help host and maintain your website, including server setup, backups, security updates, and performance checks.',
+      details: 'We can help with domains, server configuration, backups, and routine maintenance. The hosting and support work included will be set out in your proposal.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       icon: ServerIcon
     }
@@ -173,15 +175,21 @@ const WhatWeOffer: React.FC = () => {
   }, []);
 
   return (
-    <section className="pt-0 pb-4 bg-white" id="services">
+    <section className="overflow-hidden pt-0 pb-4 bg-white" id="services">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-full mx-auto mb-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3">
-            End-to-End Digital Product Development
-          </h2>
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3"
+            initial={{ opacity: reduceMotion ? 1 : 0, x: reduceMotion ? 0 : -160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.8, margin: '0px 0px -60px 0px' }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            What We Build
+          </motion.h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-full">
-            From mobile apps to web platforms and custom software, we build digital products that perform and scale.
+            Choose a service to see how we can help with your project.
           </p>
         </div>
 

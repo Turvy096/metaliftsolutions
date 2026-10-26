@@ -1,39 +1,39 @@
 const servicePackages = [
   {
-    title: 'Product Launch Sprint',
+    title: 'Build a First Version',
     summary:
-      'From idea validation to interactive prototype and production-ready MVP delivered in focused sprints.',
+      'Plan and build an initial version with the core features needed to test your idea with users.',
     deliverables: [
-      'Product strategy workshops',
-      'UX research and customer journeys',
-      'Design system starter kit',
-      'MVP implementation and QA',
+      'Requirements and project planning',
+      'User research and workflow planning',
+      'Reusable interface components',
+      'Development and testing',
     ],
-    timeline: '8-12 weeks',
+    timeline: 'Agreed after scoping',
   },
   {
-    title: 'Scale-Up Experience Refresh',
+    title: 'Improve Existing Software',
     summary:
-      'Elevate your flagship experience with refined UX, new feature experiments, and performance enhancements.',
+      'Review an existing website or app, improve the design, and address performance or usability issues.',
     deliverables: [
-      'UX audit and analytics review',
-      'Experience redesign and usability testing',
-      'Front-end modernization',
-      'Roll-out and enablement playbook',
+      'Usability and performance review',
+      'Interface improvements and usability testing',
+      'Frontend updates',
+      'Release planning and team handover',
     ],
-    timeline: '6-10 weeks',
+    timeline: 'Agreed after review',
   },
   {
-    title: 'Embedded Product Pod',
+    title: 'Work With Your Team',
     summary:
-      'Dedicated cross-functional squad plugging directly into your roadmap with ongoing sprints and reporting.',
+      'Add design and development support to your existing team for a project or ongoing work.',
     deliverables: [
-      'Product leadership and PM support',
-      'Design, engineering, QA specialists',
+      'Project planning and coordination',
+      'Design, development, and testing',
       'Automated testing and DevOps',
-      'Quarterly roadmap co-creation',
+      'Ongoing planning and reviews',
     ],
-    timeline: 'Quarterly retainers',
+    timeline: 'Agreed together',
   },
 ];
 
@@ -65,11 +65,11 @@ const Services = () => (
           Services
         </span>
         <h1 className="text-4xl font-bold text-slate-900 transition-colors sm:text-5xl dark:text-white">
-          Signature services tailored to your growth stage.
+          Software Services for Your Business
         </h1>
         <p className="mx-auto max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          We assemble the exact mix of strategy, UX, and engineering talent you need--aligned to outcomes,
-          transparent in delivery, and relentless on quality.
+          We help plan, design, and build websites, apps, and business software. We agree on the scope,
+          costs, and delivery schedule before work begins.
         </p>
       </div>
     </section>
@@ -77,7 +77,7 @@ const Services = () => (
     <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div className="space-y-10">
         <h2 className="text-center text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-          Engagement models that move fast but never break things.
+          Ways We Can Work Together
         </h2>
         <div className="grid gap-6 lg:grid-cols-3">
           {servicePackages.map((pkg) => (
@@ -102,14 +102,14 @@ const Services = () => (
                 ))}
               </ul>
               <div className="mt-6 flex items-center justify-between rounded-2xl border border-brand-100 bg-brand-50/90 px-4 py-3 text-xs uppercase tracking-[0.3em] text-slate-500 transition-colors dark:border-white/10 dark:bg-night/60 dark:text-slate-300">
-                <span>Typical timeline</span>
+                <span>Timeline</span>
                 <span className="text-brand-500 transition-colors dark:text-brand-200">{pkg.timeline}</span>
               </div>
               <a
                 href="/contact"
                 className="mt-6 inline-flex items-center justify-center rounded-full border border-brand-100 px-4 py-3 text-sm font-semibold text-brand-500 transition hover:border-brand-500 hover:text-brand-600 dark:border-brand-400/60 dark:text-brand-200 dark:hover:border-brand-300 dark:hover:text-brand-100"
               >
-                Schedule a discovery call
+                Discuss your project
               </a>
             </article>
           ))}
@@ -123,37 +123,36 @@ const Services = () => (
         <div className="grid gap-12 lg:grid-cols-[0.85fr,1.15fr] lg:items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-              We plug in as your senior product pod.
+              Support From Planning to Launch
             </h2>
             <p className="text-slate-700 transition-colors dark:text-slate-100">
-              You get a battle-tested team that has shipped zero-to-one products, revamped legacy platforms,
-              and scaled multi-market launches. We obsess over the handoffs so your team stays focused on strategy.
+              We can help with a new project or improvements to software you already use. We start by
+              understanding the work involved and agreeing on who is responsible for each part.
             </p>
             <p className="text-slate-700 transition-colors dark:text-slate-100">
-              Expect weekly show-and-tells, transparent sprint reports, and proactive recommendations shaped by
-              real user insights.
+              We share progress, ask for feedback, and discuss changes before adding them to the scope.
             </p>
           </div>
           <div className="grid gap-6 rounded-3xl border border-brand-100 bg-white p-8 shadow-sm shadow-brand-50/30 transition-colors duration-300 dark:border-white/10 dark:bg-white/5">
             <h3 className="text-xl font-semibold text-slate-900 transition-colors dark:text-white">
-              Your pod includes
+              Areas We Can Help With
             </h3>
             <ul className="grid gap-3 text-sm text-slate-700 transition-colors dark:text-slate-100 sm:grid-cols-2">
               <li className="rounded-2xl border border-brand-100 bg-brand-50/80 px-4 py-3 transition-colors dark:border-white/10 dark:bg-night/60">
-                Lead product strategist
+                Project planning
               </li>
               <li className="rounded-2xl border border-brand-100 bg-brand-50/80 px-4 py-3 transition-colors dark:border-white/10 dark:bg-night/60">
-                Senior UX/UI designer
+                Interface design
               </li>
               <li className="rounded-2xl border border-brand-100 bg-brand-50/80 px-4 py-3 transition-colors dark:border-white/10 dark:bg-night/60">
-                Front-end and mobile engineers
+                Web and mobile development
               </li>
               <li className="rounded-2xl border border-brand-100 bg-brand-50/80 px-4 py-3 transition-colors dark:border-white/10 dark:bg-night/60">
                 QA and launch specialist
               </li>
             </ul>
             <p className="text-xs uppercase tracking-[0.3em] text-slate-500 transition-colors dark:text-slate-300">
-              Optional add-ons: content design, data analyst, growth marketing.
+              The services included will be set out in your project proposal.
             </p>
           </div>
         </div>
@@ -163,7 +162,7 @@ const Services = () => (
     <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <div className="space-y-10">
         <h2 className="text-center text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-          Modern tooling and stacks we ship with.
+          Tools We Use
         </h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {techStacks.map((stack) => (
@@ -194,16 +193,16 @@ const Services = () => (
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#ffe7da] via-white to-[#ffe3d2] blur-3xl transition-colors duration-300 dark:from-brand-500/20 dark:via-brand-400/10 dark:to-transparent" />
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 rounded-[2.5rem] border border-brand-50 bg-white px-6 py-12 text-center shadow-[0_32px_120px_-60px_rgba(227,72,19,0.45)] transition-colors duration-300 dark:border-white/10 dark:bg-white/10 dark:text-white dark:backdrop-blur lg:px-16">
         <h2 className="text-3xl font-semibold text-slate-900 transition-colors sm:text-4xl dark:text-white">
-          Let&apos;s map the best engagement for your team.
+          Tell Us What You Need
         </h2>
         <p className="max-w-3xl text-lg text-slate-700 transition-colors dark:text-slate-100">
-          Share where you are in the product journey. We will recommend the right pod shape, roadmap, and investment.
+          Tell us what you want to build or improve. We can discuss the work involved, a suitable approach, and an estimate.
         </p>
         <a
           href="/contact"
           className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 via-brand-400 to-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/30 transition hover:shadow-xl"
         >
-          Start a conversation
+          Contact us
         </a>
       </div>
     </section>

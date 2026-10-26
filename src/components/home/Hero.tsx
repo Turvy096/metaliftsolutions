@@ -77,17 +77,15 @@ const Hero: React.FC = () => {
             variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
-            Digital products engineered for
-            measurable performance.
+            Websites, apps, and software built for your business.
           </motion.h1>
           <motion.p
             className="text-[15px] sm:text-[1.125rem] md:text-[1.25rem] lg:text-xl leading-relaxed text-white/80 max-w-3xl mx-auto px-2 sm:px-0"
             variants={{ hidden: { opacity: 0, y: 42 }, visible: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            Metalift Solutions blends strategy, UX, and engineering into end-to-end experiences for
-            ambitious teams across Africa and beyond. Every engagement is grounded in outcomes, scale,
-            and operational clarity.
+            Metalift Solutions builds websites, mobile apps, and custom software for businesses. We
+            work with you to understand what you need, develop the solution, and support it after launch.
           </motion.p>
         </motion.div>
         <motion.div

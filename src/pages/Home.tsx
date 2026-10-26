@@ -45,14 +45,14 @@ const Home = () => {
         </div>
 
         {/* What We Offer Section */}
-        <Reveal id="services" className="scroll-mt-28">
+        <div id="services" className="scroll-mt-28">
           <WhatWeOffer />
-        </Reveal>
+        </div>
 
         {/* Services Section - Industries section */}
-        <Reveal id="about" className="scroll-mt-28" delay={0.05}>
+        <div id="about" className="scroll-mt-28">
           <ServicesSection />
-        </Reveal>
+        </div>
 
         {/* Technology Stack Section */}
         <Reveal className="scroll-mt-28">
@@ -60,12 +60,12 @@ const Home = () => {
         </Reveal>
 
         {/* Projects Section */}
-        <Reveal id="projects" className="scroll-mt-28">
+        <div id="projects" className="scroll-mt-28">
           <ProjectsSection
             projects={projects}
             onProjectClick={handleProjectClick}
           />
-        </Reveal>
+        </div>
 
         {/* FAQ Section */}
         <Reveal className="scroll-mt-28">

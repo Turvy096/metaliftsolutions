@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 
 interface Project {
   title: string;
@@ -82,6 +83,7 @@ const ProjectCard: React.FC<{
 };
 
 const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, onProjectClick }) => {
+  const reduceMotion = useReducedMotion();
   const handleProjectClick = (project: Project) => {
     if (onProjectClick) {
       onProjectClick(project);
@@ -89,14 +91,20 @@ const ProjectsSection: React.FC<ProjectsSectionProps> = ({ projects, onProjectCl
   };
 
   return (
-    <section className="pt-1 pb-8 bg-white">
+    <section className="overflow-hidden pt-1 pb-8 bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-full mx-auto mb-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3">
+          <motion.h2
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3"
+            initial={{ opacity: reduceMotion ? 1 : 0, x: reduceMotion ? 0 : -160 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.8, margin: '0px 0px -60px 0px' }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
             Recent Projects
-          </h2>
+          </motion.h2>
           <p className="text-base sm:text-lg text-slate-600 max-w-full">
-            Explore our recent projects showcasing innovative digital solutions across various industries. From concept to deployment, we deliver excellence.
+            A selection of our projects, including work currently in development.
           </p>
         </div>
         <div className="mt-6 grid gap-2 md:grid-cols-2 lg:grid-cols-3">

@@ -65,11 +65,10 @@ const Contact: React.FC = () => {
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center justify-center py-8 sm:py-12 md:py-16 lg:py-20 px-4 text-center sm:px-6 lg:px-8">
           <div className="max-w-4xl space-y-3 sm:space-y-4 md:space-y-6">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-[1.2] sm:leading-[1.3] lg:leading-[1.4] animate-slideUp">
-              Let's Turn Your Idea Into Reality
+              Talk to Us About Your Project
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-white/80 animate-slideUp animation-delay-200 max-w-3xl mx-auto px-2">
-              Ready to turn your software or app idea into reality? Fill out the
-              form below to get started with our expert development team.
+              Send us a message about your website, app, or software project. We can discuss the requirements and next steps.
             </p>
           </div>
         </div>
@@ -81,14 +80,10 @@ const Contact: React.FC = () => {
           <div className="space-y-6 md:space-y-8">
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Driving Digital Growth
-                <br />
-                With Changing
-                <br />
-                Technology
+                Get in Touch
               </h1>
               <p className="mt-4 md:mt-6 max-w-lg text-sm sm:text-base md:text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-               We help startups and growing businesses turn their ideas into secure, scalable digital products. Smart technology meets practical execution to get you to market faster.
+               Use the form, email us, or contact us by phone or WhatsApp. Tell us what you need help with, and we can discuss the next steps.
               </p>
             </div>
 
@@ -156,8 +151,8 @@ const Contact: React.FC = () => {
 
           {/* Form - Added stronger shadow */}
           <div className="rounded-2xl border border-slate-100 bg-white p-4 sm:p-6 md:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] transition-shadow duration-300 dark:border-white/10 dark:bg-white/5">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Ready to Get Started?</h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">Share your idea with us, and we'll help you build it faster, and more efficiently. Please indicate your Full Name, Email and Quotation and any need for your request and indicate whether or not you want to protect your business idea by signing an NDA.</p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">Send Us a Message</h2>
+            <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300">Describe what you need, who will use it, and any budget or deadline you have in mind. If you would like to discuss an NDA before sharing details, mention that in your message.</p>
 
             <form onSubmit={handleSubmit} className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -192,7 +187,7 @@ const Contact: React.FC = () => {
 
               <div className="flex items-start gap-3">
                 <label htmlFor="nda" className="text-sm text-slate-600 dark:text-slate-300">
-                Happy to work with you!
+                Fields marked * are required.
                 </label>
               </div>
 
@@ -202,10 +197,10 @@ const Contact: React.FC = () => {
                 className="w-full rounded-xl px-6 py-3 sm:py-3.5 text-sm font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#0d1a30]/40 disabled:cursor-not-allowed disabled:opacity-60"
                 style={{ backgroundColor: '#0d1a30' }}
               >
-                {status === 'sending' ? 'Sending...' : 'Send Message'}
+                {status === 'sending' ? 'Sending...' : 'Send message'}
               </button>
               <div aria-live="polite" className="min-h-5 text-sm">
-                {status === 'success' && <p className="text-green-700">Thank you. Your message has been sent successfully.</p>}
+                {status === 'success' && <p className="text-green-700">Thanks. Your message has been sent.</p>}
                 {status === 'error' && <p className="text-red-600">We couldn't send your message. Please try again or email info@metaliftsolutions.co.ke.</p>}
               </div>
             </form>

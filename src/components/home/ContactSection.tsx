@@ -52,13 +52,10 @@ const ContactSection: React.FC = () => {
         <div className="space-y-8">
           <div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white">
-              Let's Bring Your Idea To Tech
-              <br />
-              Reality
+              Tell Us About Your Project
             </h2>
             <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
-              Are Ready to turn your software or app idea into reality? Fill out
-              the form below to get started with our expert development team.
+              Tell us what you need to build or improve. Include your budget and preferred timeline if you have them.
             </p>
           </div>
 
@@ -125,7 +122,7 @@ const ContactSection: React.FC = () => {
                   htmlFor="home-contact-name"
                   className="mb-1.5 block text-sm font-medium text-slate-700"
                 >
-                  Full Name <span className="text-red-500">*</span>
+                  Full name <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="home-contact-name"
@@ -144,7 +141,7 @@ const ContactSection: React.FC = () => {
                   htmlFor="home-contact-phone"
                   className="mb-1.5 block text-sm font-medium text-slate-700"
                 >
-                  Phone Number <span className="text-red-500">*</span>
+                  Phone number <span className="text-red-500">*</span>
                 </label>
                 <input
                   id="home-contact-phone"
@@ -165,7 +162,7 @@ const ContactSection: React.FC = () => {
                 htmlFor="home-contact-email"
                 className="mb-1.5 block text-sm font-medium text-slate-700"
               >
-                Email Address <span className="text-red-500">*</span>
+                Email address <span className="text-red-500">*</span>
               </label>
               <input
                 id="home-contact-email"
@@ -205,12 +202,12 @@ const ContactSection: React.FC = () => {
               className="w-full rounded-xl px-6 py-3.5 font-semibold text-white transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#0d1a30]/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60 dark:focus:ring-offset-slate-900"
               style={{ backgroundColor: "#0d1a30" }}
             >
-              {status === "sending" ? "Sending..." : "Send Message"}
+              {status === "sending" ? "Sending..." : "Send message"}
             </button>
             <div aria-live="polite" className="min-h-5 text-sm">
               {status === "success" && (
                 <p className="text-green-700">
-                  Thank you. Your message has been sent successfully.
+                  Thanks. Your message has been sent.
                 </p>
               )}
               {status === "error" && (

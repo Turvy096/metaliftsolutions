@@ -121,8 +121,7 @@ const DevelopmentModal: React.FC<DevelopmentModalProps> = ({
               margin: "0 0 12px 0",
             }}
           >
-            This project is currently in development. We're working hard to
-            bring you an amazing experience. Stay tuned for the launch!
+            This project is in development and is not available to try yet.
           </p>
           {project.description && (
             <p

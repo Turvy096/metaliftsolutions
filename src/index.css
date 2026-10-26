@@ -199,3 +199,28 @@ html {
   background: linear-gradient(135deg, #fdf5ef, #ffffff);
   color: #1f2933;
 }
+/* Keep heading text visible even if the scroll observer does not fire. */
+.animated-heading {
+  --heading-entry-x: 0px;
+  --heading-entry-y: -28px;
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes headingEntrance {
+  from { transform: translate(var(--heading-entry-x), var(--heading-entry-y)); }
+  to { transform: translate(0, 0); }
+}
+
+@media (min-width: 768px) {
+  .animated-heading {
+    --heading-entry-x: -160px;
+    --heading-entry-y: 0px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animated-heading[data-in-view='true'] {
+    animation: headingEntrance 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}

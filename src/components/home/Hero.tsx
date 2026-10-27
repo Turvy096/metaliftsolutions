@@ -45,7 +45,8 @@ const Hero: React.FC = () => {
           src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
           alt="Keyboard background"
           className="w-full h-full object-cover"
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
         />
         <div
           className="absolute inset-0"

@@ -14,39 +14,39 @@ const techCategories: TechCategory[] = [
   {
     name: 'Mobile App',
     items: [
-      { name: 'ANDROID', icon: 'https://cdn.simpleicons.org/android/3DDC84' },
-      { name: 'IOS', icon: 'https://cdn.simpleicons.org/apple/ffffff' },
-      { name: 'FLUTTER', icon: 'https://cdn.simpleicons.org/flutter/02569B' },
-      { name: 'REACT NATIVE', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
-      { name: 'KOTLIN', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
+      { name: 'ANDROID', icon: '/images/technologies/android.svg' },
+      { name: 'IOS', icon: '/images/technologies/apple.svg' },
+      { name: 'FLUTTER', icon: '/images/technologies/flutter.svg' },
+      { name: 'REACT NATIVE', icon: '/images/technologies/react.svg' },
+      { name: 'KOTLIN', icon: '/images/technologies/kotlin.svg' },
     ],
   },
   {
     name: 'Backend',
     items: [
-      { name: 'JAVA', icon: 'https://cdn.simpleicons.org/openjdk/ED8B00' },
-      { name: 'KOTLIN', icon: 'https://cdn.simpleicons.org/kotlin/7F52FF' },
-      { name: 'GOLANG', icon: 'https://cdn.simpleicons.org/go/00ADD8' },
+      { name: 'JAVA', icon: '/images/technologies/openjdk.svg' },
+      { name: 'KOTLIN', icon: '/images/technologies/kotlin.svg' },
+      { name: 'GOLANG', icon: '/images/technologies/go.svg' },
     ],
   },
   {
     name: 'Frontend',
     items: [
-      { name: 'TYPESCRIPT', icon: 'https://cdn.simpleicons.org/typescript/3178C6' },
-      { name: 'REACT', icon: 'https://cdn.simpleicons.org/react/61DAFB' },
-      { name: 'TAILWIND', icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+      { name: 'TYPESCRIPT', icon: '/images/technologies/typescript.svg' },
+      { name: 'REACT', icon: '/images/technologies/react.svg' },
+      { name: 'TAILWIND', icon: '/images/technologies/tailwindcss.svg' },
       {
         name: 'CSS',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'
+        icon: '/images/technologies/css3.svg'
       },
     ],
   },
   {
     name: 'Databases',
     items: [
-      { name: 'MYSQL', icon: 'https://cdn.simpleicons.org/mysql/4479A1' },
-      { name: 'POSTGRESQL', icon: 'https://cdn.simpleicons.org/postgresql/4169E1' },
-      { name: 'MONGODB', icon: 'https://cdn.simpleicons.org/mongodb/47A248' },
+      { name: 'MYSQL', icon: '/images/technologies/mysql.svg' },
+      { name: 'POSTGRESQL', icon: '/images/technologies/postgresql.svg' },
+      { name: 'MONGODB', icon: '/images/technologies/mongodb.svg' },
     ],
   },
   {
@@ -54,11 +54,11 @@ const techCategories: TechCategory[] = [
     items: [
       {
         name: 'FIGMA',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'
+        icon: '/images/technologies/figma.svg'
       },
       {
         name: 'PHOTOSHOP',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg'
+        icon: '/images/technologies/photoshop.svg'
       },
     ],
   },
